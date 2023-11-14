@@ -113,13 +113,6 @@
         "description": "TEST Uranus",
         "symbol":"./img/planets/uranus.svg"
     },
-    "Glise-436b":{
-        "diameter":55196,
-        "mass":1.33,
-        "mass2":26,
-        "image":"./img/planets/glise436b.png",
-        "description": "TEST Glise-436b"
-    },
     "Hat-p-11b":{
         "diameter":60339,
         "mass":1.538,
