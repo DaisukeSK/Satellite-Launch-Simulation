@@ -1,8 +1,12 @@
 when satellite landed planet, make it touch the surface of planet
 
-when run app with console open, planet list shadow dosen't work properly
+what is display:flex in .middle for?
 
-during satellite running, when click upper middle part of viewport, inputs are abled
+input validation
+
+launchBtn.onclick in main js should have the same if-condition as input validation in launch.js??
+
+when ceres selected, alt=500 need to be shown to all parameter displays
 
 //////////////////////////////////////////////////////////////
 difference between offsetWidth and getBoundingClientRect.width?

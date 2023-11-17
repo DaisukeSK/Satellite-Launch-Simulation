@@ -14,15 +14,11 @@ const arrowUp = document.querySelector(".arrowUp")
 const innerScale = document.querySelector(".innerScale")
 const inputVelo = document.querySelector('input[name="velo"]')
 const inputAlt = document.querySelector('input[name="alt"]')
-const launchBtn = document.querySelector(".launchBtn")
+const launch = document.querySelector(".launchBtn")
 const middle = document.querySelector(".middle")
 const sateInfoUpper = document.querySelector(".sateInfoUpper")
 const sateInfoLower = document.querySelector(".sateInfoLower")
 const showInitParams = document.querySelector(".showInitParams")
-
-const initVelo = document.querySelector(".initVelo")
-const initAlt = document.querySelector(".initAlt")
-
 
 const body=document.querySelector("body");
 const satellite=document.querySelector("#satellite");
@@ -34,17 +30,14 @@ const imgWidthPercentSaturn="123%"//Use the same value as CSS
 
 // const planetLiBGcolor1="rgba(255, 211, 15, 0.5)"
 // const planetLiBGcolor2="rgba(255, 59, 15, 0.5)"
-const planetLiBGcolor1="none"// for testing purpose only
-const planetLiBGcolor2="none"// for testing purpose only
+const planetLiBGcolor1="none"
+const planetLiBGcolor2="none"
 console.log("left_right",left_right)
 let raitio=[]
 let ratio_E=[]
 let changeRatio=1;
-
-const px_km=63.78//1px=63.78km
-
-export let px=px_km/changeRatio;
-export let planetLi, planetImg, liBaseWidth, imgWidth, mddlWidth, plWidth2, mass, planetContainerLi, forBoxShadow, func, saturn, clickPlanetList
+let px=63.78/changeRatio;//1px=63.78km
+let planetLi, planetImg, liBaseWidth, imgWidth, mddlWidth, plWidth2, mass, planetContainerLi, forBoxShadow, func, saturn, clickPlanetList
 
 // arrowSvg.onmouseover=()=>{
 //     arrowShadow.forEach(val=>{
@@ -71,53 +64,44 @@ arrowSvg.forEach(val=>{
 })
 
 arrowDown.onclick=()=>{
+    scrollInput.disabled=false
     planetList.style.transitionDelay="0s"
     scrollBar.style.transitionDelay="0s"
     arrowDown.style.transitionDelay="0s"
-    arrowUp.style.transitionDelay=".7s"
-    
+    arrowUp.style.transitionDelay="0s"
     planetList.style.top="50px"
     planetList.style.opacity=1
     
-    scrollInput.disabled=false
     scrollBar.style.opacity=1
     arrowDown.style.opacity=0
-    arrowUp.style.opacity=1
     arrowDown.style.zIndex=0
-    // arrowDown.style.transition=" all ease-out .7s";
-    // arrowUp.style.transition=" all ease-out .7s .7s";
-
-    satellite.style.transitionDelay= "0s";
-    planetContainer.style.transitionDelay= "0s";
+    arrowUp.style.opacity=1
+    arrowDown.style.transition=" all ease-out .7s";
+    arrowUp.style.transition=" all ease-out .7s .7s";
 
     satellite.style.opacity=0
     planetContainer.style.opacity=0
 
-    // planetContainer.style.transition= "opacity ease-out .7s";
-
-
+    satellite.style.transition= "opacity ease-out .7s";
+    planetContainer.style.transition= "opacity ease-out .7s";
     left_right.forEach(val=>{
-        val.style.transitionDelay="0s";
         val.style.opacity=0
         // val.style.display="none"
+        val.style.transition="all ease-out .7s";
         // val.style.display="none"
         val.style.zIndex=-1
     })
 
     inputAlt.disabled=true
     inputVelo.disabled=true
-    launchBtn.disabled=true
+    launch.disabled=true
     
 }
 
 const listUp=()=>{
-    arrowDown.style.transitionDelay=".7s";
-    arrowUp.style.transitionDelay="0s";
-
+    scrollInput.disabled=true
     planetList.style.top="-500px";
     planetList.style.opacity=0
-
-    scrollInput.disabled=true
     scrollBar.style.opacity=0
     arrowDown.style.opacity=1
     arrowDown.style.zIndex=2
@@ -126,6 +110,8 @@ const listUp=()=>{
     satellite.style.opacity=1
     planetContainer.style.opacity=1
     
+    arrowDown.style.transition=" all ease-out .7s .7s";
+    arrowUp.style.transition=" all ease-out .7s";
     // middleLeftRight.forEach(val=>{
     //     val.style.opacity=0
     //     val.style.transition= "opacity ease-out .7s .7s";
@@ -139,71 +125,56 @@ const listUp=()=>{
 
     inputAlt.disabled=false
     inputVelo.disabled=false
-    launchBtn.disabled=false
-}
-
-arrowUp.onclick=()=>{
-    listUp()
-    left_right.forEach(val=>{
-        // val.style.opacity=1
-        // val.style.transition="all ease-out .7s";
-    })
-    
-}
-
-launchBtn.onclick=()=>{
-    if(inputVelo.value && inputAlt.value){
-        
-        document.querySelector(".rectSVG").style.opacity=0
-        document.querySelector(".instructionSVG").style.opacity=0
-        listUp()
-        arrowDown.style.transitionDelay="0s";
-        console.log("Launced::",inputVelo.value,inputAlt.value)
-    }
+    launch.disabled=false
 }
 
 const checkSatelliteAlt=()=>{
     // sateInfoUpper.style.display=sate.getBoundingClientRect().top>=70?"block":"none"
     // sateInfoLower.style.display=sate.getBoundingClientRect().top>=70?"none":"block"
     if(+satellite.style.top.split("px")[0]>=70){
-        console.log(">>>",+satellite.style.top.split("px")[0])
+        console.log(">>>",+sate.style.top.split("px")[0])
         showInitParams.style.top="-40px"
     }else{
         console.log("<<<",+satellite.style.top.split("px")[0])
         showInitParams.style.top="30px"
     }
 }
+arrowUp.onclick=()=>{
+    listUp()
+    left_right.forEach(val=>{
+        // val.style.opacity=1
+        val.style.transition="all ease-out .7s";
+    })
+    
+}
 
-const inputAltChange=(num)=>{
+launch.onclick=()=>{
+    if(inputVelo.value && inputAlt.value){
 
-    if(num/2){
-        satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-num/px+"px"
-        document.querySelector(".showInitAlt").textContent=parseInt(num).toLocaleString()
-        initAlt.innerText=parseInt(num).toLocaleString()
-        // console.log("Sate top",satellite.getBoundingClientRect().top)
-        checkSatelliteAlt()
+        document.querySelector(".rectSVG").style.opacity=0
+        document.querySelector(".instructionSVG").style.opacity=0
+        listUp()
+        arrowDown.style.transition=" all ease-out .7s";
+        console.log("Launced::",inputVelo.value,inputAlt.value)
     }
 }
 
 inputVelo.oninput=(e)=>{
     if(e.target.value/2 || e.target.value==0){
         document.querySelector(".showInitVelo").textContent=parseInt(e.target.value).toLocaleString()
-        initVelo.innerText=parseInt(e.target.value).toLocaleString()
+            
     }
 }
 
 inputAlt.oninput=(e)=>{
-    // console.log(e.target.value/2)
-    // if(e.target.value/2){
-    //     satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-e.target.value/px+"px"
-    //     document.querySelector(".showInitAlt").textContent=parseInt(e.target.value).toLocaleString()
-    //     initAlt.innerText=parseInt(e.target.value).toLocaleString()
-    //     console.log("Sate top",satellite.getBoundingClientRect().top)
-    //     checkSatelliteAlt()
+    if(e.target.value/2){
+        satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-e.target.value/px+"px"
+        document.querySelector(".showInitAlt").textContent=parseInt(e.target.value).toLocaleString()
+        console.log("Sate top",satellite.getBoundingClientRect().top)
+        checkSatelliteAlt()
         
         
-    // }
-    inputAltChange(e.target.value)
+    }
 }
 
 const convertNum=(num)=>{
@@ -223,26 +194,28 @@ await fetch("planets.json")
         planetList.insertAdjacentHTML("beforeend",
         `
             <li class='planetLi planetLi${key+1} ${val}'>
-                <div class="planetContainerLi"></div>
+                <div class="planetContainerLi">
 
-                <div class="planetLiTop">
+                    <div class="planetLiTop">
 
-                    <div class="pName">
-                        <span>${val}</span>
+                        <div class="pName">
+                            <span>${val}</span>
+                        </div>
+                        <div class="grid">
+                            <div class="gridLeft">Diameter:</div>
+                            <div class="diameter">${convertNum(data[val].diameter)}</div>
+                            <div class="gridLeft">Mass:</div>
+                            <div>${(Math.round(data[val].mass*100))/100}×10<sup>${data[val].mass2}</sup>&nbsp;[kg]</div>
+                        </div>
+                        
+
                     </div>
-                    <div class="grid">
-                        <div class="gridLeft">Diameter:</div>
-                        <div class="diameter">${convertNum(data[val].diameter)}</div>
-                        <div class="gridLeft">Mass:</div>
-                        <div>${(Math.round(data[val].mass*100))/100}×10<sup>${data[val].mass2}</sup>&nbsp;[kg]</div>
-                    </div>
+
+                    <img class="planetImg" src="${data[val].image}"/>
+                    
+                    <div class="forBoxShadow"></div>
 
                 </div>
-
-                <img class="planetImg" src="${data[val].image}"/>
-                
-                <div class="forBoxShadow"></div>
-
             </li>
         `)
         if(data[val].symbol){
@@ -285,17 +258,14 @@ await fetch("planets.json")
         if(pName=="Ceres"){
             console.log("Ceres selected")
             inputAlt.value=500
-            // satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-inputAlt.value/px+"px"
-            inputAltChange(inputAlt.value)
-        
         }
-        // document.querySelectorAll(".param2 span").forEach(val=>{
-        //     val.textContent=parseInt(inputAlt.value).toLocaleString()
-        // })
+        document.querySelectorAll(".param2 span").forEach(val=>{
+            val.textContent=parseInt(inputAlt.value).toLocaleString()
+        })
+        planetContainer.querySelector("img").src=data[pName].image
         mass=data[pName].mass*(10**data[pName].mass2)
 
         
-        planetContainer.querySelector("img").src=data[pName].image
         planetContainer.querySelector("img").style.width=pName=="Saturn"?"211%":"120%"
     
     
@@ -306,17 +276,9 @@ await fetch("planets.json")
         document.querySelector(".massSup").textContent=data[pName].mass2
         document.querySelector(".diaSpan").innerHTML=convertNum(data[pName].diameter)
     }
-
-
-
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
     func=(value,number)=>{
 
-        planetLi.forEach(val=>{
+        planetContainerLi.forEach(val=>{
         
         // val.style.background="none"
         val.style.outline="none"
@@ -526,7 +488,7 @@ await fetch("planets.json")
         if(number){
             // planetLi[number-1].style.backgroundColor="rgba(81, 255, 71, 0.7)"
             // planetLi[number-1].querySelector(".planetContainerLi").style.backgroundColor="rgba(81, 255, 71, 0.7)"
-            planetLi[number-1].style.outline="2px solid white"
+            planetLi[number-1].querySelector(".planetContainerLi").style.outline="2px solid white"
             planetLi[number-1].querySelector(".forBoxShadow").style.boxShadow="inset 0 0 20px white, 0 0 30px white"
             // console.log("cntnr",planetContainerLi[0].querySelector("img").getBoundingClientRect())
             console.log("cntnr",planetContainerLi[0].offsetHeight)
@@ -534,11 +496,6 @@ await fetch("planets.json")
             // planetLi[number-1].querySelector(".planetContainerLi").style.zIndex=1
         }
     }//const func=(value,number)
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
 
 
     scrollInput.oninput=(e)=>{
@@ -554,7 +511,7 @@ await fetch("planets.json")
             // changeRatio=data.Earth.diameter/data[pName].diameter
             changeRatio=1/ratio_E[key]
             // console.log("Ratio::",changeRatio,1/ratio_E[key])
-            px=px_km/changeRatio
+            px=63.78/changeRatio
             
             // console.log("e",e.target.closest(".planetLi").querySelector("planetImg").src)
             // planetContainer.style.width=changeRatio*cntnrBaseWidth*data[pName].diameter/data.Earth.diameter+"px"
@@ -592,12 +549,12 @@ await fetch("planets.json")
             
             // innerScale.innerHTML=convertNum(data[pName].diameter)
             scrollInput.value=scrollInput.max*(num-1)/(planetLi.length-1)
-            satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().height/2-changeRatio*parseInt(inputAlt.value)/px_km+"px"
+            satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().height/2-changeRatio*parseInt(inputAlt.value)/63.78+"px"
             // scrollInput.disabled=true
             planetList.style.transitionDelay=".5s"
             scrollBar.style.transitionDelay=".5s"
-            // arrowDown.style.transitionDelay="5s"
-            // arrowUp.style.transitionDelay=".5s"
+            arrowDown.style.transitionDelay=".5s"
+            arrowUp.style.transitionDelay=".5s"
             // planetList.style.top="-350px";
             // planetList.style.opacity=0
             
@@ -609,18 +566,15 @@ await fetch("planets.json")
             
             // console.log("top:",window.innerHeight/2,planetContainer.getBoundingClientRect().height/2,initAlt)
             // satellite.style.top="20px"
-            satellite.style.transitionDelay= ".7s";
-            planetContainer.style.transitionDelay= ".7s";
-            // planetContainer.style.transition= "opacity ease-in-out .7s .7s";
+            satellite.style.transition= "opacity ease-in-out .7s .7s";
+            planetContainer.style.transition= "opacity ease-in-out .7s .7s";
             left_right.forEach(val=>{
                 // val.style.opacity=1
-                // val.style.transition="all ease-out .7s";
-                val.style.transitionDelay=".7s"
+                val.style.transition="all ease-out .7s .7s";
             })
             listUp()
             checkSatelliteAlt()
         }
-        
         
     })//planetLi.forEach, onclick
     
@@ -638,7 +592,7 @@ console.log("onload running")
 //     `linear-gradient(90deg, navy ${left.getBoundingClientRect().left+left.getBoundingClientRect().width}px, transparent)`:
 //     `linear-gradient(270deg, navy ${left.getBoundingClientRect().left+left.getBoundingClientRect().width}px, transparent)`;
 // })
-// body.style.height=window.innerHeight+"px"
+body.style.height=window.innerHeight+"px"
 
 // planetList.style.left=mddlWidth/2-planetLi[0].getBoundingClientRect().width/2+"px"
 // planetLi[1].style.width=liBaseWidth+(liBaseWidth*raitio[0]-liBaseWidth)+"px"
@@ -687,7 +641,4 @@ scrollInput.value=scrollInput.max*9/(planetLi.length-1)
 clickPlanetList(document.querySelector("li.Earth"))
 console.log("init_Mass",mass)
 checkSatelliteAlt()
-
-initVelo.innerText=parseInt(inputVelo.value).toLocaleString()
-initAlt.innerText=parseInt(inputAlt.value).toLocaleString()
 }// End of window.onload

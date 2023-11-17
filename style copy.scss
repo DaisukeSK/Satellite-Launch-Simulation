@@ -47,9 +47,6 @@ body {
             box-sizing: border-box;
             // opacity: 0;
             // transition: all ease-out .7s;
-            transition-property: all;
-            transition-timing-function: ease-out;
-            transition-duration: .7s;
             
         }
         .left {
@@ -188,7 +185,7 @@ body {
                 .toRight {
                     margin-left: auto;
                 }
-                .toRight, .time {
+                .toRight, .time, .gravityDiv {
                     color: rgb(10, 221, 221);
                 }
             }
@@ -283,10 +280,7 @@ body {
                 // opacity: 1;
                 // color: white;
                 width: fit-content;
-
-                transition-property: all;
-                transition-timing-function: ease-out;
-                transition-duration: .7s;
+                // transition: all ease-out .7s;
                 // svg {
                 //     // margin-top: 5px;
                 //     // margin-left: 10px;
@@ -381,39 +375,37 @@ body {
                 margin: 0;
                 padding: 0;
                 display: flex;
-                align-items: flex-end;
                 
                 // background-color: rgba(0, 0, 0, 0.8);
                 
                 
-                // justify-content: center;
+                justify-content: center;
                 transition: opacity ease-out .7s, top ease-out .7s;
                 // z-index: 2;
                 .planetLi {
                     // transition: width linear .7s;
                     width: 300px;
                     width: 230px;
-                    // height: 100%;
+                    height: 100%;
                     // border: 1px solid grey;////////////////////////
                     box-sizing: border-box;
                     position: relative;
                     // transition: width linear .3s;
-                    border-radius: 15px;
-                    
                     .planetContainerLi {
                         // height: fit-content;
                         position: absolute;
                         // bottom: 115px;
                         bottom: 0;
-                        display: none;
                         left: 0;
                         // transform: translateX(-50%);
                         width: 100%;
                         // padding-top: 10px;
+                        border-radius: 15px;
                         // padding: 5px 0;
                         // background-color: rgb(0, 0, 0);
+                        box-sizing: border-box;
                         z-index: 0;
-                    }
+                        
                         .planetLiTop {
                             //     position: absolute;
                             // bottom: 10px;
@@ -493,7 +485,7 @@ body {
                             // box-sizing: border-box;
                             z-index: 1;
                         }
-                    
+                    }
                 }
                 li.Saturn {
                     .planetImg {
@@ -521,11 +513,9 @@ body {
         transform: translate(-50%,-50%);
         // transition: top ease-out .5s;
         z-index: -1;
+        // transition: opacity ease-out .7s;
         color: white;
         // transition: top ease-out .3s;
-        transition-property: opacity;
-        transition-timing-function: ease-out;
-        transition-duration: .7s;
         .satelliteImg {
             width: 100%;
         }
@@ -628,10 +618,7 @@ body {
         justify-content: center;
         align-items: center;
         z-index: -2;
-        // transition: opacity ease-out .7s;
-        transition-property: opacity;
-        transition-timing-function: ease-out;
-        transition-duration: .7s;
+        transition: opacity ease-out .7s;
         // background-color: rgba(127, 255, 212, 0.5);
 
         img {

@@ -11,54 +11,65 @@
 <body>
     
     
-    <canvas class="history"></canvas>
+    <canvas class="history"></canvas><!-- Direct child of body -->
     
-    <div class="flex">
+    <div class="flex"><!-- Direct child of body -->
         
         <div class="left">
-            <svg class="rectSVG" width="500" height="170">
-                <rect x="13" y="7" rx="7" ry="7" width="270" height="140"/>
-                <rect x="13" y="7" rx="7" ry="7" width="270" height="140" filter="blur(10px)"/>
+            <svg class="rectSVG" width="100%" height="170">
+                <rect x="50%" y="7" rx="7" ry="7" width="220" height="145" transform="translate(-110,0)"/>
+                <rect x="50%" y="7" rx="7" ry="7" width="220" height="145" transform="translate(-110,0)" filter="blur(10px)"/>
 
-                <path class="arrow1" d="m320 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z"/>
-                <path class="arrow2" d="m340 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z"/>
-                <path class="arrow3" d="m360 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z"/>
-                <path class="arrow4" d="m380 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z"/>
-                <path class="arrow5" d="m400 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z"/>
-                <path class="arrow1" d="m320 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z" filter="blur(10px)"/>
-                <path class="arrow2" d="m340 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z" filter="blur(10px)"/>
-                <path class="arrow3" d="m360 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z" filter="blur(10px)"/>
-                <path class="arrow4" d="m380 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z" filter="blur(10px)"/>
-                <path class="arrow5" d="m400 80 l10 0 l-15 15 l15 15 l-10 0 l-15 -15 Z" filter="blur(10px)"/>
-                <text x="320" y="70" fill="white">Input and launch.</text>
+            </svg>
+
+            <svg class="instructionSVG" width="100%" height="100">
+                
+                <text x="50" y="75" fill="white">Input and launch.</text>
+                
+                <path d="m 20 90 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange"></path>
+                <path d="m 20 90 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange" filter="blur(5px)"></path>
             </svg>
             
-            <div class="parameters">
-                </div>
-                <div class="leftGrid">
-                <div class="use2columns2">
-                    <label>Initial Launch velocity&nbsp;[m/s]</label>
+            <!-- <div class="parameters">
+                </div> -->
+            <div class="leftGrid">
+                <div class="use2columns leftGridTop">
+                    <label>Launch velocity&nbsp;[m/s]</label>
                     <input type="text" name="velo" value="1000" required/>
                 </div>
-                <div class="use2columns2">
+                <div class="use2columns leftGridTop">
                     <label>Launch Altitude&nbsp;[km]</label>
                     <input type="text" name="alt" value="1000" required/>
                 </div>
                 <!-- <label>Observation</label>
                 <input type="range" class="observation" name="observation" min="0" max="2" value="0" required/> -->
-                <div class="use2columns2">
-                    <input class="launchSate" type="submit" value="Launch"/>
-                    <input class="abort" type="submit" value="Abort" disabled/>
+                <div class="use2columns leftGridTop">
+                    <input class="launchBtn" type="submit" value="Launch"/>
+                    <input class="abortBtn" type="submit" value="Abort" disabled/>
                 </div>
-                <div><b>Initial velocity:</b></div><div><span class="velo"></span>&nbsp;[m/s]</div>
-                <div><b>Launch Altitude:</b></div><div><span class="initAlt"></span>&nbsp;[km]</div>
-                <div class="use2columns paramTime"><b>Time:</b><span class="time"></span></div>
-                <div><b>Altitude:</b></div><div><span class="alt"></span>&nbsp;[km]</div>
+
+                <div><b>Launch velocity:</b></div>
+                <div class="toRight"><span class="initVelo"></span>&nbsp;[m/s]</div>
+
+                <div><b>Launch Altitude:</b></div>
+                <div class="toRight"><span class="initAlt"></span>&nbsp;[km]</div>
+
+                <div class="use2columns timeFlex">
+                    <div><b>Time:</b></div>
+                    <div class="time">-</div>
+                </div>
+
+                <div><b>Altitude:</b></div>
+                <div class="toRight"><span class="alt">-</span>&nbsp;[km]</div>
+
                 <div class="use2columns"><b>Garvtity Acceleration:</b></div>
-                <div class="use2columns">g = <span class="gravity"></span>&nbsp;[m<sup>1</sup>s<sup>-2</sup>]</div>
+
+                <div class="use2columns toRight">g =&nbsp;
+                    <span class="gravity">-</span>&nbsp;[m<sup>1</sup>s<sup>-2</sup>]
+                </div>
 
             </div>
-        </div>
+        </div><!-- .left -->
             
         <div class="middle">
             <!-- <div class="middleLeft"></div>
@@ -67,13 +78,13 @@
 
                 <svg width="60" height="50">
                     
-                    <path class="arrowHidden" d="M10 10 l5 0 l15 15 l15 -15 l5 0 l-20 20 Z" fill="white" filter="blur(7px)"/>
-                    <path class="arrowHidden" d="M10 20 l5 0 l15 15 l15 -15 l5 0 l-20 20 Z" fill="white" filter="blur(7px)"/>
+                    <path class="arrowShadow" d="M10 10 l5 0 l15 15 l15 -15 l5 0 l-20 20 Z" fill="white" filter="blur(7px)"/>
+                    <path class="arrowShadow" d="M10 20 l5 0 l15 15 l15 -15 l5 0 l-20 20 Z" fill="white" filter="blur(7px)"/>
                     <path d="M10 10 l5 0 l15 15 l15 -15 l5 0 l-20 20 Z" fill="white"/>
                     <path d="M10 20 l5 0 l15 15 l15 -15 l5 0 l-20 20 Z" fill="white"/>
                     
                 </svg>
-                <div class="arrowDownMssg arrowHidden">Select other planets/stars</div>
+                <div class="arrowDownMssg arrowShadow">Select other planets/stars</div>
 
             </div>
             <div class="arrowUp">
@@ -82,8 +93,8 @@
                     
                     <path d="M10 40 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white"/>
                     <path d="M10 30 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white"/>
-                    <path class="arrowHidden" d="M10 40 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white" filter="blur(7px)"/>
-                    <path class="arrowHidden" d="M10 30 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white" filter="blur(7px)"/>
+                    <path class="arrowShadow" d="M10 40 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white" filter="blur(7px)"/>
+                    <path class="arrowShadow" d="M10 30 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white" filter="blur(7px)"/>
                     
                     
                     
@@ -104,61 +115,72 @@
             </div>
             <ul class="planetList">
             </ul>
-        </div>
+        </div><!-- .middle -->
             
         <div class="right">
             
             <div class="rightTop">
-                <div class="nameDiv"></div>
-                <div class="description"></div>
+                <div class="planetName"></div>
+                <div class="planetDescription"></div>
             </div>
-            <div class="rightGrid">
-                <div><b>Diameter:</b></div><div>R = <span class="diaSpan"></span></div>
-                <div><b>Mass:</b></div><div>M = <span class="massSpan"></span>×10<sup class="massSup"></sup>&nbsp;[kg]</div>
-                <div class="use2columns"><b>Gravitational Constant:</b></div>
-                <div class="use2columns">G = 6.67×10<sup>-11</sup>&nbsp;[m<sup>3</sup>kg<sup>-1</sup>s<sup>-2</sup>]</div>
-                <div class="use2columns"><b>Gravity Acceleration:</b></div>
-                <div class="use2columns">g = MG/R<sup>2</sup>&nbsp;[m<sup>1</sup>s<sup>-2</sup>]</div>
 
+            <div class="rightGrid">
+                <div>
+                    <div><b>Diameter:</b></div>
+                    <div>R = <span class="diaSpan"></span></div>
+                </div>
+
+                <div>
+                    <div><b>Mass:</b></div>
+                    <div>M = <span class="massSpan"></span>×10<sup class="massSup"></sup>&nbsp;[kg]</div>
+                </div>
+
+                <div>
+                    <div><b>Gravitational Constant:</b></div>
+                    <div>G = 6.67×10<sup>-11</sup>&nbsp;[m<sup>3</sup>kg<sup>-1</sup>s<sup>-2</sup>]</div>
+                </div>
+
+                <div>
+                    <div><b>Gravity Acceleration:</b></div>
+                    <div>g = MG/R<sup>2</sup>&nbsp;[m<sup>1</sup>s<sup>-2</sup>]</div>
+                </div>
+                
             </div>
             
-        </div>
+        </div><!-- .right -->
     
-    </div>
+    </div><!-- .flex -->
 
-    <div id="sate">
-        <img src="./img/satellite.png"/>
-        <div class="launchArrow"><img src="./img/planets/rightArrow.svg"/><span>Launch</span></div>
-        <div class="sateInfoUpper">
-            <div class="params">
-                <div><b>Satellite:</b></div>
-                <div class="param1">Launch Velocity:&nbsp;<span>1,000</span>&nbsp;[m/s]</div>
-                <div class="param2">Launch Altitude:&nbsp;<span>1,000</span>&nbsp;[km]</div>
-            </div>
-            <svg height="20" width="270">
-                <path d="M0 20 L20 0 L270 0" fill="none" stroke="white" stroke-width="1px"></path>
-            </svg>
-        </div>
 
-        <div class="sateInfoLower">
-            <div class="params">
-                <div><b>Satellite:</b></div>
-                <div class="param1">Launch Velocity:&nbsp;<span>1,000</span>&nbsp;[m/s]</div>
-                <div class="param2">Launch Altitude:&nbsp;<span>1,000</span>&nbsp;[km]</div>
-            </div>
-            <svg height="70" width="280">
-                <path d="M0 0 L70 70 L280 70" fill="none" stroke="white" stroke-width="1px"></path>
-            </svg>
+    <!--//////// Direct child of body ////////-->
+    <div id="satellite">
+        <img  class="satelliteImg" src="./img/satellite.png"/>
+        <!-- <div> -->
+        <img class="launchDirectionImg" src="./img/planets/rightArrow.svg"/>
+        <!-- </div> -->
+        <div class="showInitParams">
+            <div>Launch velocity: <span class="showInitVelo">1,000</span>&nbsp;[m/s]</div>
+            <div>Launch altitude: <span class="showInitAlt">1,000</span>&nbsp;[km]</div>
+            
         </div>
-    </div>
-    <div class="scale2"></div>
-    <div class="containerEarth">
+        
+    </div><!-- .sate -->
+
+
+    <!--//////// Direct child of body ////////-->
+    <div class="scale_testing_purpose_only"></div>
+
+
+    <!--//////// Direct child of body ////////-->
+    <div class="planetContainer">
         <img src="./img/planets/earth.png"/>
     </div>
+
     
     <script src="./js/jquery-3.6.1.min.js"></script>
-<script src="./js/satellite.js"></script>
-<script src="./js/launch.js"></script>
+    <!-- <script type="module" src="./js/index.js"></script> -->
+    <script type="module" src="./js/satellite.js"></script>
+    <script type="module" src="./js/launch.js"></script>
 
 </body>
 </html>
