@@ -1,17 +1,18 @@
+import { listBrowsing } from "./functions.js"
 
 // const initAlt=16//as 1000km
 const left_right=document.querySelectorAll(".left, .right")
 // const middleLeftRight=document.querySelectorAll(".middleLeft, .middleRight")
-const planetList=document.querySelector(".planetList")
+export const planetList=document.querySelector(".planetList")
 const range=document.querySelector('.range input[type="range"]');
 const scrollBar=document.querySelector(".scrollBar")
-const scrollInput=document.querySelector(".scrollBar input")
+export const scrollInput=document.querySelector(".scrollBar input")
 const planetContainer = document.querySelector(".planetContainer")
 const arrowDown = document.querySelector(".arrowDown")
 const arrowSvg = document.querySelectorAll(".arrowDown svg, .arrowUp svg")
 const arrowShadow = document.querySelectorAll(".arrowShadow")
 const arrowUp = document.querySelector(".arrowUp")
-const innerScale = document.querySelector(".innerScale")
+export const innerScale = document.querySelector(".innerScale")
 const inputVelo = document.querySelector('input[name="velo"]')
 const inputAlt = document.querySelector('input[name="alt"]')
 const launchBtn = document.querySelector(".launchBtn")
@@ -23,28 +24,33 @@ const showInitParams = document.querySelector(".showInitParams")
 const initVelo = document.querySelector(".initVelo")
 const initAlt = document.querySelector(".initAlt")
 
+const question = document.querySelector(".questionSymbolHolder")
+const instruction = document.querySelector(".instruction")
+const instructionBG = document.querySelector(".instructionBG")
+const close = document.querySelector(".close")
+
 
 const body=document.querySelector("body");
 const satellite=document.querySelector("#satellite");
 
 const cntnrBaseWidth=planetContainer.getBoundingClientRect().width
 
-const imgWidthPercent="84%"//Use the same value as CSS
+export const imgWidthPercent="84%"//Use the same value as CSS
 const imgWidthPercentSaturn="123%"//Use the same value as CSS
 
 // const planetLiBGcolor1="rgba(255, 211, 15, 0.5)"
 // const planetLiBGcolor2="rgba(255, 59, 15, 0.5)"
-const planetLiBGcolor1="none"// for testing purpose only
-const planetLiBGcolor2="none"// for testing purpose only
+export const planetLiBGcolor1="none"// for testing purpose only
+export const planetLiBGcolor2="none"// for testing purpose only
 console.log("left_right",left_right)
-let raitio=[]
+export let raitio=[]
 let ratio_E=[]
 let changeRatio=1;
 
 const px_km=63.78//1px=63.78km
 
 export let px=px_km/changeRatio;
-export let planetLi, planetImg, liBaseWidth, imgWidth, mddlWidth, plWidth2, mass, planetContainerLi, forBoxShadow, func, saturn, clickPlanetList
+export let planetLi, planetImg, liBaseWidth, imgWidth, mddlWidth, plWidth2, mass, planetContainerLi, forBoxShadow, saturn, clickPlanetList
 
 // arrowSvg.onmouseover=()=>{
 //     arrowShadow.forEach(val=>{
@@ -56,6 +62,65 @@ export let planetLi, planetImg, liBaseWidth, imgWidth, mddlWidth, plWidth2, mass
 //         val.style.display="none"
 //     })
 // }
+// console.log("question",question)
+
+question.onmouseenter=(e)=>{
+    
+    // e.target.querySelector("#add").setAttribute("fill","#646cd6")
+    e.target.querySelector("#add").style.fill="#646cd6"
+    // e.target.closest(".questionSymbolHolder").querySelector(".about").style.display="block"
+    e.target.querySelector(".about").style.opacity=1
+}
+question.onmouseleave=(e)=>{
+    
+    e.target.querySelector("#add").style.fill="#ffffff"
+    e.target.querySelector(".about").style.opacity=0
+    
+}
+question.onclick=(e)=>{
+    // console.log("clicked",e.target)
+    instruction.style.top=`50%`
+    instruction.style.opacity=1
+
+    console.log("e",e.target.closest("div").querySelector("#add"))
+    e.target.closest(".questionSymbolHolder").style.opacity=0
+
+    instructionBG.style.display="block"
+    setTimeout(()=>{
+        instructionBG.style.opacity=1
+
+    },0)
+}
+
+close.onclick=()=>{
+    instruction.style.top=`-${window.innerHeight}px`
+    instruction.style.opacity=0
+
+    question.style.opacity=1
+
+    instructionBG.style.opacity=0
+    setTimeout(()=>{
+
+        instructionBG.style.display="none"
+    },1000)
+}
+
+close.onmouseenter=(e)=>{
+
+    e.target.querySelector("rect").style.stroke="#444444"
+    e.target.querySelectorAll("path").forEach(val=>{
+        val.style.stroke="#444444"
+    })
+}
+
+close.onmouseleave=(e)=>{
+
+    e.target.querySelector("rect").style.stroke="grey"
+    e.target.querySelectorAll("path").forEach(val=>{
+        val.style.stroke="grey"
+    })
+}
+
 
 arrowSvg.forEach(val=>{
     val.onmouseover=()=>{
@@ -206,7 +271,7 @@ inputAlt.oninput=(e)=>{
     inputAltChange(e.target.value)
 }
 
-const convertNum=(num)=>{
+export const convertNum=(num)=>{
     return `${(Math.round(100*num/(10**(num.toString().length-1))))/100}×10<sup>${num.toString().length-1}</sup>&nbsp;[km]`
 }
 
@@ -263,6 +328,9 @@ await fetch("planets.json")
     forBoxShadow = document.querySelectorAll(".forBoxShadow")
     // mass=data["Earth"].mass*(10**data["Earth"].mass2)
     // console.log("Mass",mass)
+    // question.onclick=()=>{
+    //     console.log("ok")
+    // }
 
     planetLi=document.querySelectorAll(".planetLi")
     planetImg=document.querySelectorAll(".planetLi .planetImg")
@@ -314,12 +382,15 @@ await fetch("planets.json")
     ///////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////
-    func=(value,number)=>{
+    let funcxxx=(value,number)=>{
+        // value: range input value,
+        // number: palnet number
 
         planetLi.forEach(val=>{
         
         // val.style.background="none"
         val.style.outline="none"
+        val.querySelector(".forBoxShadow").style.boxShadow="none"
         // val.style.boxShadow="none"
         // val.style.zIndex="auto"
     })
@@ -327,11 +398,11 @@ await fetch("planets.json")
         
         // val.style.background="none"
         // val.style.outline="none"
-        val.style.boxShadow="none"
+        // val.style.boxShadow="none"
         // val.style.zIndex="auto"
     })
 
-    if((value==0 && !number)||number==1){
+    if((value==0 && !number)||number==1){// Leftmost li
         
         planetList.style.left=(mddlWidth-liBaseWidth)/2+"px"
         planetLi[1].style.width=liBaseWidth*raitio[0]+"px"
@@ -340,8 +411,8 @@ await fetch("planets.json")
         planetImg[0].style.width=imgWidthPercent
         planetImg[1].style.width=imgWidthPercent
         planetImg[2].style.width=imgWidthPercent
-        planetLi[0].style.backgroundColor=planetLiBGcolor1
-        planetLi[1].style.backgroundColor=planetLiBGcolor1
+        planetLi[0].style.backgroundColor=planetLiBGcolor1// for testing purpose only
+        planetLi[1].style.backgroundColor=planetLiBGcolor1// for testing purpose only
         planetLi[2].style.background="none"
 
         innerScale.innerHTML=planetLi[0].querySelector(".diameter").innerHTML
@@ -350,14 +421,14 @@ await fetch("planets.json")
         // console.log("change",e.target.value)
         // saturn.style.width=imgWidthPercentSaturn
 
-        }else if((value==scrollInput.max && !number)||number==planetLi.length){
+        }else if((value==scrollInput.max && !number)||number==planetLi.length){// Rightmost li
 
             planetLi.forEach(val=>{
                 val.style.width=liBaseWidth+"px"
             })
 
             planetList.style.left=(planetLi[planetLi.length-1].getBoundingClientRect().width+mddlWidth)/2-planetList.getBoundingClientRect().width+"px"
-            planetLi[planetLi.length-1].style.backgroundColor=planetLiBGcolor1
+            planetLi[planetLi.length-1].style.backgroundColor=planetLiBGcolor1// for testing purpose only
             
             planetImg[planetLi.length-1].style.width=imgWidth+"px"
             planetImg[planetLi.length-2].style.width=imgWidth/raitio[planetLi.length-2]+"px"
@@ -542,14 +613,18 @@ await fetch("planets.json")
 
 
     scrollInput.oninput=(e)=>{
-        func(e.target.value,null)
+        listBrowsing(e.target.value,null,data)
     }
     scrollInput.onchange=(e)=>{
-        func(e.target.value,null)
+        listBrowsing(e.target.value,null,data)
     }
 
     planetLi.forEach((val,key)=>{
         val.onclick=(e)=>{
+            satellite.style.transitionProperty="none, none"
+            setTimeout(()=>{
+                satellite.style.transitionProperty="opacity, top"
+            },0)
             
             // changeRatio=data.Earth.diameter/data[pName].diameter
             changeRatio=1/ratio_E[key]
@@ -587,7 +662,7 @@ await fetch("planets.json")
             console.log("Click",num,planetLi.length,scrollInput.value,scrollInput.max)
             
             
-            func(null,num)
+            listBrowsing(null,num,data)
             // innerScale.textContent=e.target.closest(".planetLi").querySelector(".diameter").textContent+" km"
             
             // innerScale.innerHTML=convertNum(data[pName].diameter)
@@ -609,7 +684,7 @@ await fetch("planets.json")
             
             // console.log("top:",window.innerHeight/2,planetContainer.getBoundingClientRect().height/2,initAlt)
             // satellite.style.top="20px"
-            satellite.style.transitionDelay= ".7s";
+            satellite.style.transitionDelay= ".7s, 0s";
             planetContainer.style.transitionDelay= ".7s";
             // planetContainer.style.transition= "opacity ease-in-out .7s .7s";
             left_right.forEach(val=>{
@@ -619,17 +694,19 @@ await fetch("planets.json")
             })
             listUp()
             checkSatelliteAlt()
+            
         }
         
         
     })//planetLi.forEach, onclick
     
-})// End of await fetch("planets.json")
+// })// End of await fetch("planets.json")
 
 ////////////////////////// Onload //////////////////////////
 ////////////////////////// Onload //////////////////////////
 ////////////////////////// Onload //////////////////////////
 console.log("onload running")
+instruction.style.top=`-${window.innerHeight}px`
 // console.log("left width",left.getBoundingClientRect())
 // middleLeftRight.forEach((val, key)=>{
 //     val.style.width=left.getBoundingClientRect().left + left.getBoundingClientRect().width*1.5+"px"
@@ -682,7 +759,7 @@ makeStar(100, 4);
 // console.log("Onload strn width",saturn.querySelector("img").getBoundingClientRect().width)
 saturn.querySelector(".planetImg").style.width="150%"
 saturn.style.width="535px"
-func(null,10)
+listBrowsing(null,10,data)
 scrollInput.value=scrollInput.max*9/(planetLi.length-1)
 clickPlanetList(document.querySelector("li.Earth"))
 console.log("init_Mass",mass)
@@ -690,4 +767,6 @@ checkSatelliteAlt()
 
 initVelo.innerText=parseInt(inputVelo.value).toLocaleString()
 initAlt.innerText=parseInt(inputAlt.value).toLocaleString()
+
+})// End of await fetch("planets.json")
 }// End of window.onload

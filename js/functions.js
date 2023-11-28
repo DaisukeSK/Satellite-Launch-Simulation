@@ -1,24 +1,27 @@
-import {planetLi,forBoxShadow,planetList,planetImg} from "./satellite.js"
+import { imgWidth,planetLi,planetList,mddlWidth,liBaseWidth,raitio,planetImg,imgWidthPercent,planetLiBGcolor1,planetLiBGcolor2, innerScale,scrollInput,plWidth2,convertNum,saturn} from "./main.js"
+ 
 
-
-export const func=(value,number)=>{
+export const listBrowsing=(value,number,jsonData)=>{
+    // value: range input value,
+    // number: palnet number
 
     planetLi.forEach(val=>{
     
     // val.style.background="none"
     val.style.outline="none"
+    val.querySelector(".forBoxShadow").style.boxShadow="none"
     // val.style.boxShadow="none"
     // val.style.zIndex="auto"
 })
-forBoxShadow.forEach(val=>{
+// forBoxShadow.forEach(val=>{
     
-    // val.style.background="none"
-    // val.style.outline="none"
-    val.style.boxShadow="none"
-    // val.style.zIndex="auto"
-})
+//     // val.style.background="none"
+//     // val.style.outline="none"
+//     // val.style.boxShadow="none"
+//     // val.style.zIndex="auto"
+// })
 
-if((value==0 && !number)||number==1){
+if((value==0 && !number)||number==1){// Leftmost li
     
     planetList.style.left=(mddlWidth-liBaseWidth)/2+"px"
     planetLi[1].style.width=liBaseWidth*raitio[0]+"px"
@@ -27,8 +30,8 @@ if((value==0 && !number)||number==1){
     planetImg[0].style.width=imgWidthPercent
     planetImg[1].style.width=imgWidthPercent
     planetImg[2].style.width=imgWidthPercent
-    planetLi[0].style.backgroundColor=planetLiBGcolor1
-    planetLi[1].style.backgroundColor=planetLiBGcolor1
+    planetLi[0].style.backgroundColor=planetLiBGcolor1// for testing purpose only
+    planetLi[1].style.backgroundColor=planetLiBGcolor1// for testing purpose only
     planetLi[2].style.background="none"
 
     innerScale.innerHTML=planetLi[0].querySelector(".diameter").innerHTML
@@ -37,14 +40,14 @@ if((value==0 && !number)||number==1){
     // console.log("change",e.target.value)
     // saturn.style.width=imgWidthPercentSaturn
 
-    }else if((value==scrollInput.max && !number)||number==planetLi.length){
+    }else if((value==scrollInput.max && !number)||number==planetLi.length){// Rightmost li
 
         planetLi.forEach(val=>{
             val.style.width=liBaseWidth+"px"
         })
 
         planetList.style.left=(planetLi[planetLi.length-1].getBoundingClientRect().width+mddlWidth)/2-planetList.getBoundingClientRect().width+"px"
-        planetLi[planetLi.length-1].style.backgroundColor=planetLiBGcolor1
+        planetLi[planetLi.length-1].style.backgroundColor=planetLiBGcolor1// for testing purpose only
         
         planetImg[planetLi.length-1].style.width=imgWidth+"px"
         planetImg[planetLi.length-2].style.width=imgWidth/raitio[planetLi.length-2]+"px"
@@ -75,6 +78,7 @@ if((value==0 && !number)||number==1){
         }else{
             planetList.style.left=(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.max+"px"
         }
+
         // console.log("change",e.target.value)
 
         // const widthSum=Math.floor(mddlWidth/2-(+planetList.style.left.split("px")[0]))
@@ -130,11 +134,12 @@ if((value==0 && !number)||number==1){
                     ////////////////////////////////////////////////////////
                     //             const pName=e.target.closest(".planetLi").querySelector(".pName").textContent
                     // changeRatio=data.Earth.diameter/data[pName].diameter
-                    const baseDis1=data[planetLi[key-1].querySelector(".pName span").textContent].diameter
-                    const baseDis2=data[planetLi[key].querySelector(".pName span").textContent].diameter
+                    const baseDis1=jsonData[planetLi[key-1].querySelector(".pName span").textContent].diameter
+                    const baseDis2=jsonData[planetLi[key].querySelector(".pName span").textContent].diameter
                     const difference=baseDis2-baseDis1
                     // console.log("distance",baseDis,difference)
                     innerScale.innerHTML=convertNum(Math.round(baseDis1+difference*percent))
+                    
                     
                     planetLi[key].style.width=liBaseWidth*(1+(raitio[key-1]-1)*(1-percent))+"px"
                     
@@ -216,8 +221,9 @@ if((value==0 && !number)||number==1){
         planetLi[number-1].style.outline="2px solid white"
         planetLi[number-1].querySelector(".forBoxShadow").style.boxShadow="inset 0 0 20px white, 0 0 30px white"
         // console.log("cntnr",planetContainerLi[0].querySelector("img").getBoundingClientRect())
-        console.log("cntnr",planetContainerLi[0].offsetHeight)
+        // console.log("cntnr",planetContainerLi[0].offsetHeight)
         // planetLi[number-1].querySelector(".forBoxShadow").style.height=planetLi[number-1].querySelector(".planetContainerLi").getBoundingClientRect().height+"px"
         // planetLi[number-1].querySelector(".planetContainerLi").style.zIndex=1
     }
+
 }//const func=(value,number)

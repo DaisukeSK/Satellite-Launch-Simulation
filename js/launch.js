@@ -8,7 +8,7 @@
 
 "use strict";
 
-import { mass, px } from "./satellite.js"
+import { mass, px } from "./main.js"
 
 $(document).ready(function(){
     
@@ -32,6 +32,7 @@ const inputAlt = $('input[name="alt"]')
 const launchBtn = $(".launchBtn")
 const ovsRange = $(".observation")
 const abortBtn = $(".abortBtn")
+const question = $(".questionSymbolHolder")
 
 const altSpan=$(".alt")
 
@@ -70,6 +71,7 @@ console.log("Input:",ini_velo)
 
     }else{
 
+        satellite.css("transitionProperty","none")
         inputVelo.attr("disabled",true)
         inputAlt.attr("disabled",true)
         launchBtn.attr("disabled",true)
@@ -86,6 +88,7 @@ console.log("Input:",ini_velo)
 
         console.log("Launch")
 
+        question.css("left","-50px")
 
         // Keep variables below inside onclick function to initialize them everytime launch button is clicked
         
@@ -275,7 +278,6 @@ console.log("Input:",ini_velo)
 
 
 const Reset=()=>{
-    
     satellite.offset({top: center_y-radius-ini_alt/px-size/2, left: center_x-size/2});
     drawPath.clearRect(0, 0, historyCV.width, historyCV.height);
     arrowDown.css("top","0")
@@ -293,6 +295,13 @@ const Reset=()=>{
     altSpan.text("-")
     time.text("-")
     gravitySpan.text("-");
+
+    question.css("left","10px")
+
+    setTimeout(()=>{
+        satellite.css("transitionProperty","opacity, top")
+    
+    },0)
 }
 
 abortBtn.click(()=>{
