@@ -1,6 +1,6 @@
 
 document.write(`
-<div class="questionSymbolHolder">
+<div class="questionSymbolHolder" style="display:none">
     <svg class="questionSymbol" width="30" height="30" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ea1a1a" stroke="#ea1a1a">
         <g id="SVGRepo_bgCarrier" stroke-width="0"/>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Satellite</title>
+<title>Satellite Launch simulation</title>
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
 
@@ -13,13 +13,16 @@
     <script src="./js/include.js"></script>
     
     <div class="instructionBG"></div>
-    <div class="instruction">Instruction
+    <div class="instruction">
         <svg class="close" width="20" height="20">
             <rect x="1" y="1" rx="5" ry="5" width="18" height="18"/>
             <path d="M5 5 l10 10"/>
             <path d="M15 5 l-10 10"/>
-            
         </svg>
+        <p>
+            This is a numerical satellite-launch simulation built based on the formula for gravity.
+        </p>
+        <div></div>
     </div>
     
     
@@ -133,7 +136,7 @@
             
             <div class="rightTop">
                 <div class="planetName"></div>
-                <div class="planetDescription"></div>
+                <div class="planetDescription" style="display:none"></div>
             </div>
 
             <div class="rightGrid">
@@ -180,7 +183,7 @@
 
 
     <!--//////// Direct child of body ////////-->
-    <div class="scale_testing_purpose_only"></div>
+    <!-- <div class="scale_testing_purpose_only"></div> -->
 
 
     <!--//////// Direct child of body ////////-->

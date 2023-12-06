@@ -269,7 +269,7 @@ console.log("Input:",ini_velo)
                 }
 
 
-        },5);
+        },10);
 
 
     }
