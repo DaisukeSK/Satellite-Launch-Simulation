@@ -1,5 +1,44 @@
-import { imgWidth,planetLi,planetList,mddlWidth,liBaseWidth,raitio,planetImg,imgWidthPercent,planetLiBGcolor1,planetLiBGcolor2, innerScale,scrollInput,plWidth2,convertNum,saturn} from "./main.js"
- 
+import { planetContainer,initAlt,satellite,px, imgWidth,planetLi,planetList,liBaseWidth,raitio,planetImg,scrollInput,plWidth2,saturn} from "./main.js"
+
+const showInitParams = document.querySelector(".showInitParams")
+const innerScale = document.querySelector(".innerScale")
+const imgWidthPercent="84%"//Use the same value as CSS
+const imgWidthPercentSaturn="123%"//Use the same value as CSS
+const planetLiBGcolor1="none"// for testing purpose only
+const planetLiBGcolor2="none"// for testing purpose only
+const mddlWidth= +$(".middle").css("width").split("px")[0]
+
+
+export const checkSatelliteAlt=()=>{
+    showInitParams.style.top= +satellite.style.top.split("px")[0]>=70 ? "-40px":"30px"
+}
+
+
+export const inputAltChange=(num)=>{
+    if(num/2){
+        satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-num/px+"px"
+        $(".showInitAlt").text(parseInt(num).toLocaleString())
+        initAlt.innerText=parseInt(num).toLocaleString()
+        checkSatelliteAlt()
+    }
+}
+
+
+export const convertNum=(num)=>{
+    return `${(Math.round(100*num/(10**(num.toString().length-1))))/100}×10<sup>${num.toString().length-1}</sup>&nbsp;[km]`
+}
+
+
+export const makeStar=(num, classNum)=>{
+    for(let i=0; i<=num; i++){
+        const randX=(Math.random()*97)
+        const randY=(Math.random()*97)
+        const shineIntvl=Math.random()*5+3
+        const div='<div class="star'+classNum+' star" style="top:'+randY+'%; left:'+randX+'%; animation-duration: '+shineIntvl+'s"></div>'
+        document.querySelector("body").insertAdjacentHTML("beforeend",div)
+    }
+}
+
 
 export const listBrowsing=(value,number,jsonData)=>{
     // value: range input value,
@@ -76,9 +115,11 @@ if((value==0 && !number)||number==1){// Leftmost li
             
             planetList.style.left=left3+"px"
         }else{
+            
             planetList.style.left=(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.max+"px"
         }
-
+        
+        
         // console.log("change",e.target.value)
 
         // const widthSum=Math.floor(mddlWidth/2-(+planetList.style.left.split("px")[0]))

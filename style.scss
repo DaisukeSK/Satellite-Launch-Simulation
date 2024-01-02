@@ -6,7 +6,6 @@ body {
     margin: 0;
     overflow: hidden;
     min-height: 100vh;
-    // background-image: url("./img/sky3.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -30,6 +29,15 @@ body {
         height: 30px;
         z-index: 3;
         transition: all ease-out 1s;
+
+        &:hover {
+            #add {
+                fill:#646cd6;
+            }
+            .about {
+                opacity: 1;
+            }
+        }
         .questionSymbol {
             // position: absolute;
             // top: 0;
@@ -68,22 +76,52 @@ body {
         border-radius: 15px;
         // display: none;
         transition: all ease-out 1s;
-        padding: 30px 100px;
+        padding: 30px 0;
         box-sizing: border-box;
+        text-align: center;
         .close {
             position: absolute;
-        top: 10px;
-        right: 10px;
-        rect, path {
-            fill: none;
-            stroke: grey;
-            stroke-width: 2px;
+            top: 10px;
+            right: 10px;
+            &:hover {
+                rect, path {
+                    stroke: #444444;
+                }    
+            }
+            rect, path {
+                fill: none;
+                stroke: grey;
+                stroke-width: 2px;
+            }
         }
-        
-        }
+
         p {
-            background-color: rgba(0, 0, 255, 0.5);
+            // background-color: rgba(0, 0, 255, 0.5);
+            font-size: 1.1em;
+        }
+        .formulaFlex {
+
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            margin: 20px auto;
             font-size: 1.2em;
+            div {
+                margin: 0 3px;
+                // text-align: center;
+            }
+            .MG {
+                border-bottom: 1px solid black;
+            }
+        }
+        .paramsFlex {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            div {
+                margin: 0 20px;
+            }
         }
     }
     .instructionBG {
@@ -375,6 +413,14 @@ body {
                 //     margin: 0 auto;
                     
                 // }
+                
+                &:hover {
+                    .arrowShadow {
+                        display: block;
+                    }
+                }
+
+
                 .arrowShadow {
                     
                     display: none;
@@ -695,6 +741,7 @@ body {
         border: 1px solid rgba(255, 255, 255, .1);
         box-sizing: border-box;
         z-index: -1;
+        
     }
     .planetContainer {
         position: absolute;

@@ -18,6 +18,12 @@ body .questionSymbolHolder {
   z-index: 3;
   transition: all ease-out 1s;
 }
+body .questionSymbolHolder:hover #add {
+  fill: #646cd6;
+}
+body .questionSymbolHolder:hover .about {
+  opacity: 1;
+}
 body .questionSymbolHolder .questionSymbol #add {
   transition: all ease-in-out 0.3s;
 }
@@ -44,13 +50,17 @@ body .instruction {
   border: 1px solid #dddddd;
   border-radius: 15px;
   transition: all ease-out 1s;
-  padding: 30px 100px;
+  padding: 30px 0;
   box-sizing: border-box;
+  text-align: center;
 }
 body .instruction .close {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+body .instruction .close:hover rect, body .instruction .close:hover path {
+  stroke: #444444;
 }
 body .instruction .close rect, body .instruction .close path {
   fill: none;
@@ -58,8 +68,30 @@ body .instruction .close rect, body .instruction .close path {
   stroke-width: 2px;
 }
 body .instruction p {
-  background-color: rgba(0, 0, 255, 0.5);
+  font-size: 1.1em;
+}
+body .instruction .formulaFlex {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
   font-size: 1.2em;
+}
+body .instruction .formulaFlex div {
+  margin: 0 3px;
+}
+body .instruction .formulaFlex .MG {
+  border-bottom: 1px solid black;
+}
+body .instruction .paramsFlex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+body .instruction .paramsFlex div {
+  margin: 0 20px;
 }
 body .instructionBG {
   position: absolute;
@@ -265,6 +297,9 @@ body .flex .middle .arrowDown, body .flex .middle .arrowUp {
   transition-property: all;
   transition-timing-function: ease-out;
   transition-duration: 0.7s;
+}
+body .flex .middle .arrowDown:hover .arrowShadow, body .flex .middle .arrowUp:hover .arrowShadow {
+  display: block;
 }
 body .flex .middle .arrowDown .arrowShadow, body .flex .middle .arrowUp .arrowShadow {
   display: none;
