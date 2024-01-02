@@ -1,5 +1,3 @@
-
-
 body {
     background-color: black;
     position: relative;
@@ -10,17 +8,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     
-    // &::after{
-        //     content: "";
-        //     width: 100%;
-    //     height: 100%;
-    //     background-color: rgba(0, 0, 0, 0.7);
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     z-index: -3;
-    // }
-
     .questionSymbolHolder {
         position: absolute;
         top: 10px;
@@ -39,15 +26,11 @@ body {
             }
         }
         .questionSymbol {
-            // position: absolute;
-            // top: 0;
-            // left: 0;
-            // fill: #646cd6;
             #add {
                 transition: all ease-in-out .3s;
-
             }
         }
+
         .about {
             position: absolute;
             top: 50%;
@@ -55,7 +38,6 @@ body {
             left: 35px;
             color: #646cd6;
             width: 150px;
-            // display: none;
             opacity: 0;
             transition: all ease-in-out .3s;
             pointer-events: none;
@@ -64,7 +46,6 @@ body {
 
     .instruction {
         position: absolute;
-        // top: -220px;
         opacity: 0;
         left: 50%;
         transform: translate(-50%,-50%);
@@ -74,11 +55,11 @@ body {
         z-index: 3;
         border: 1px solid #dddddd;
         border-radius: 15px;
-        // display: none;
         transition: all ease-out 1s;
         padding: 30px 0;
         box-sizing: border-box;
         text-align: center;
+
         .close {
             position: absolute;
             top: 10px;
@@ -88,6 +69,7 @@ body {
                     stroke: #444444;
                 }    
             }
+
             rect, path {
                 fill: none;
                 stroke: grey;
@@ -96,40 +78,41 @@ body {
         }
 
         p {
-            // background-color: rgba(0, 0, 255, 0.5);
             font-size: 1.1em;
         }
-        .formulaFlex {
 
+        .formulaFlex {
             width: fit-content;
             display: flex;
             align-items: center;
             margin: 20px auto;
             font-size: 1.2em;
+
             div {
                 margin: 0 3px;
-                // text-align: center;
             }
             .MG {
                 border-bottom: 1px solid black;
             }
         }
+
         .paramsFlex {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
+
             div {
                 margin: 0 20px;
             }
         }
     }
+
     .instructionBG {
         position: absolute;
         top: 0;
         left: 0;
         opacity: 0;
-        
         width: 100%;
         height: 100vh;
         background-color:#74a9d857;
@@ -149,9 +132,8 @@ body {
     .flex {
         position: relative;
         height: 100vh;
-        // display: flex;
-        // justify-content: space-between;
         color: white;
+
         .left, .right {
             position: absolute;
             top: 50%;
@@ -163,13 +145,11 @@ body {
             padding: 5px;
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-sizing: border-box;
-            // opacity: 0;
-            // transition: all ease-out .7s;
             transition-property: all;
             transition-timing-function: ease-out;
             transition-duration: .7s;
-            
         }
+
         .left {
             left: 20px;
             @keyframes blink{
@@ -177,17 +157,15 @@ body {
                 50%{opacity: 1;}
                 100%{opacity: 0.2;}
             }
+
             .rectSVG {
                 overflow: visible;
                 position: absolute;
                 top: 0;
                 left: 0;
-                // transform: translateX(-50%);
-                // width: 900px;
-                // height: 200px;
-                // background-color: rgba(0, 255, 255, 0.3);
                 z-index: -1;
                 transition: opacity 1s ease-out;
+
                 rect, path {
                     fill: white;
                     animation-name: blink;
@@ -196,12 +174,13 @@ body {
                     animation-timing-function: ease-in-out;
                     animation-iteration-count: infinite;
                 }
+
                 rect {
                     fill: none;
                     stroke: white;
                     stroke-width: 7px;
-                    // animation-delay: 1s;
                 }
+
                 .arrow1 {
                     animation-delay: 1s;
                 }
@@ -217,11 +196,6 @@ body {
                 .arrow5 {
                     animation-delay: .2s;
                 }
-                // @keyframes blink{
-                    //     0%{opacity: 0.1;}
-                    //     50%{opacity: 1;}
-                //     100%{opacity: 0.1;}
-                // }
             }
 
             .instructionSVG {
@@ -230,7 +204,7 @@ body {
                 top: 0;
                 right: -100%;
                 transition: opacity 1s ease-out;
-                // background-color: #74a9d881;
+
                 path, text {
                     animation-name: blink;
                     animation-duration: 3s;
@@ -238,22 +212,17 @@ body {
                     animation-timing-function: ease-in-out;
                     animation-iteration-count: infinite;
                 }
-
             }
+
             .arrowSVG {
                 position: absolute;
                 top: 60px;
                 right: -140px;
-                
                 width: 150px;
                 height: 100px;
-                // background-color: rgba(0, 255, 21, 0.3);
                 z-index: -1;
             }
-            // .parameters {
-            //     display: flex;
-            //     flex-direction: column;
-            // }
+
             .leftGrid {
                 display: grid;
                 grid-template-columns: 135px 80px;
@@ -262,23 +231,15 @@ body {
                 align-items: center;
                 width: fit-content;
                 margin: 10px auto;
+
                 .use2columns {
-                    
                     grid-column-start: 1;
                     grid-column-end: -1;
-                    // .time{
-                    //     margin-left: auto;
-                    //     width: 100%;
-                    // }
                 }
                 
                 .leftGridTop {
-                    // width: fit-content;
-                    // margin: 0 auto;
                     width: 100%;
                     text-align: center;
-                    // grid-column-start: 1;
-                    // grid-column-end: -1;
                     label {
                         display: block;
                         width: fit-content;
@@ -299,10 +260,7 @@ body {
                     display: flex;
                     justify-content: space-between;
                 }
-                // .paramTime {
-                //     // display: flex;
-                //     // justify-content: space-between;
-                // }
+
                 .toRight {
                     margin-left: auto;
                 }
@@ -314,12 +272,9 @@ body {
         }//.left
 
         .right {
-
             right: 20px;
-            
-            // position: relative;
+
             .rightTop{
-                // color: white;
                 background-color: #3a45da88;
                 text-align: center;
                 padding: 3px;
@@ -334,24 +289,10 @@ body {
                         width: 18px;
                         margin-left: 7px;
                     }
-
                 }
             }
             
             .rightGrid {
-                // display: grid;
-                // align-items: center;
-                // row-gap: 7px;
-                // width: 80%;
-                // height: 200px;
-                // grid-template-columns: 90px 1fr;
-                // grid-template-rows: 1fr 1fr 2fr 2fr;
-                // margin: 30px auto 0;
-                // .use2columns {
-                //     grid-column-start: 1;
-                //     grid-column-end: -1;
-                // }
-
                 margin: 10px 0 0 20px;
                 height: 75%;
                 display: flex;
@@ -361,58 +302,25 @@ body {
         }//.right
         
         .middle {
-            // width: 800px;
             overflow: hidden;
             position: absolute;
             top: 0;
             left: 0;
             display: flex;
             justify-content: space-between;
-            // background-color: rgba(0, 0, 128, 0.5);////////////////////////
-            // border: 1px solid grey;
             width: 100%;
             height: 100vh;
-            // visibility: hidden;
-            // margin: 0 5px;
-            // .middleLeft, .middleRight {
-            //     position: absolute;
-            //     top: 0;
-                
-            //     height: 450px;
-            //     // background-color: cadetblue;
-            //     z-index: 1;
-            //     opacity: 0;
-            // }
-            // .middleLeft {
-            //     left: 0;
-            // }
-            // .middleRight {
-            //     right: 0;
-            // }
+
             .arrowDown, .arrowUp {
                 position: absolute;
-                // width: 230px;
-                // height: 100px;
-                // background-color: rgba(220, 20, 60, 0.5);
                 top: 0;
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 2;
-                // opacity: 1;
-                // color: white;
                 width: fit-content;
-
                 transition-property: all;
                 transition-timing-function: ease-out;
                 transition-duration: .7s;
-                // svg {
-                //     // margin-top: 5px;
-                //     // margin-left: 10px;
-                //     display: block;
-                //     // background-color: crimson;
-                //     margin: 0 auto;
-                    
-                // }
                 
                 &:hover {
                     .arrowShadow {
@@ -420,11 +328,10 @@ body {
                     }
                 }
 
-
                 .arrowShadow {
-                    
                     display: none;
                 }
+
                 .arrowDownMssg {
                     position: absolute;
                     bottom: -17px;
@@ -432,25 +339,18 @@ body {
                     transform: translateX(-50%);
                     width: 300px;
                     text-align: center;
-                    // background-color: aqua;
                     color: white;
                 }
             }
             .arrowUp {
-                
-                // background-color: rgba(20, 220, 30, 0.5);
                 z-index: 1;
                 opacity: 0;
-        
             }
-            
             
             .scrollBar {
                 position: absolute;
                 width: fit-content;
-                // bottom: 20%;
                 top: 470px;
-                // bottom: 0;
                 left: 50%;
                 transform: translateX(-50%);
                 height: fit-content;
@@ -462,12 +362,12 @@ body {
                     position: relative;
                     width: 160px;
                     height: 40px;
-                    // background-color: rgba(0, 255, 221, 0.4);
                     border: 1px white solid;
                     border-bottom: none;
                     border-top: none;
                     margin: 0 auto;
                     box-sizing: border-box;
+
                     .svgArrowLeft, .svgArrowRight {
                         position: absolute;
                         bottom: 0;
@@ -486,13 +386,8 @@ body {
                         position: absolute;
                         left: 0;
                         bottom: 5px;
-                        
                     }
                 }
-                // input[type="range"] {
-                //     width: 300px;
-                //     // display: block;
-                // }
             }
         
             .planetList {
@@ -501,126 +396,76 @@ body {
                 position: absolute;
                 top: -400px;
                 opacity: 0;
-                // left: 0;
-                // transform: translateX(-50%);
                 list-style: none;
                 margin: 0;
                 padding: 0;
                 display: flex;
                 align-items: flex-end;
-                
-                // background-color: rgba(0, 0, 0, 0.8);
-                
-                
-                // justify-content: center;
                 transition: opacity ease-out .7s, top ease-out .7s;
-                // z-index: 2;
+
                 .planetLi {
-                    // transition: width linear .7s;
                     width: 300px;
                     width: 230px;
-                    // height: 100%;
-                    // border: 1px solid grey;////////////////////////
                     box-sizing: border-box;
                     position: relative;
-                    // transition: width linear .3s;
                     border-radius: 15px;
                     
                     .planetContainerLi {
-                        // height: fit-content;
                         position: absolute;
-                        // bottom: 115px;
                         bottom: 0;
                         display: none;
                         left: 0;
-                        // transform: translateX(-50%);
                         width: 100%;
-                        // padding-top: 10px;
-                        // padding: 5px 0;
-                        // background-color: rgb(0, 0, 0);
                         z-index: 0;
                     }
                         .planetLiTop {
-                            //     position: absolute;
-                            // bottom: 10px;
-                            // left: 50%;
-                            // transform: translateX(-50%);
-                            // display: flex;
-                            // justify-content: center;
-                            // align-items: center;
                             width: fit-content;
                             margin: 10px auto;
                             color: white;
+
                             .pName {
                                 width: fit-content;
                                 padding: 3px 20px;
                                 margin: 0 auto 5px;
-                                // text-align: center;
                                 font-size: 1.2em;
                                 background-color: #636bd894;
                                 display: flex;
-                                
                                 
                                 img {
                                     width: 18px;
                                     margin-left: 7px;
                                 }
+
                             }
                             .grid {
                                 display: grid;
                                 grid-template-columns: 1fr 1fr;
                                 grid-template-rows: 1fr 1fr;
+
                                 .gridLeft {
                                     width: fit-content;
                                     margin: 0 auto;
-                                    // text-align: center;
                                 }
                             }
                         }
+
                         img {
-                            
-                            // position: absolute;
-                            // bottom: 10px;
-                            // left: 50%;
-                        // transform: translateX(-50%);
-                        display: block;
-                        margin: 0 auto;
-                        width: 84%;//Use the same value as js file
-                        // transition: width linear .7s;
+                            display: block;
+                            margin: 0 auto;
+                            width: 84%;//Use the same value as js file
                         }
-                        // .forBoxShadow {
-                        //     position: absolute;
-                        //     // bottom: 115px;
-                        //     bottom: 90px;
-                        //     left: 50%;
-                        //     transform: translateX(-50%);
-                        //     width: 100%;
-                        //     // padding-top: 10px;
-                        //     border-radius: 15px;
-                        //     // outline: 22px solid green;
-        
-                        //     // height: 300px;
-                        //     // box-sizing: border-box;
-                        //     z-index: 1;
-                        // }
+
                         .forBoxShadow {
                             position: absolute;
-                            // bottom: 115px;
                             top: 0;
                             left: 0;
-                            // transform: translateX(-50%);
                             width: 100%;
                             height: 100%;
-                            // padding-top: 10px;
                             border-radius: 15px;
-                            // outline: 22px solid green;
-        
-                            // height: 300px;
-                            // box-sizing: border-box;
                             z-index: 1;
                         }
-                    
                 }
+
                 li.Saturn {
                     .planetImg {
                         position: absolute;
@@ -628,8 +473,6 @@ body {
                         transform: translateX(-50%);
                         bottom: 3px;
                         z-index: -1;
-                        // width: 150%;
-                        // max-width: 800px;
                     }
                 }
             }//.planetList
@@ -639,110 +482,46 @@ body {
     #satellite {
         width: fit-content;
         height: 21px;
-        // border-radius: 2px;
-        // background-color: rgba(255, 255, 0, 0.3);////////////////////////
         position: absolute;
-        // top: 200px;
         left: 50%;
         transform: translate(-50%,-50%);
-        // transition: top ease-out .5s;
         z-index: -1;
         color: white;
-        // transition: top ease-out .3s;
         transition-property: opacity, top;
         transition-timing-function: ease-out;
         transition-duration: .7s;
+
         .satelliteImg {
             width: 100%;
         }
+
         .launchDirectionImg {
-            // display: flex;
-            // justify-content: center;
-            // align-items: center;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             left: 30px;
             width: 30px;
-            // margin-right: 5px;
-            img {
-            }
         }
         .showInitParams {
-            // display: none;
             width: 300px;
             position: absolute;
             top: -40px;
-            // transform: translateY(50%);
             left: -70px;
-            // display: flex;
-            // flex-direction: column;
-            // background-color: rgba(255, 127, 80, 0.1);
         }
-        // .showInitAlt {
-        //     position: absolute;
-        //     top: 50%;
-        //     transform: translateY(-50%);
-        //     left: -500px;
-        //     width: 500px;
-        //     // display: flex;
-        //     // flex-direction: column;
-        //     // background-color: rgba(165, 42, 42, 0.445);
-        // }
-        // .sateInfoUpper {
-        //     width: 270px;
-        //     height: 90px;
-        //     color: white;
-        //     position: absolute;
-        //     top: -80px;
-        //     left: 10px;
-        //     // background-color: rgba(128, 255, 0, 0.2);////////////////////////
-        //     .params {
-        //         position: absolute;
-        //         bottom: 25px;
-        //         left: 30px;
-        //         // background-color: rgba(128, 255, 0, 0.2);////////////////////////
-                
-        //     }
-        //     svg {
-        //         position: absolute;
-        //         bottom: 1px;
-        //         left: 1px;
-        //     }
-        // }
-        // .sateInfoLower {
-        //     position: absolute;
-        //     // background-color: #636bd85d;
-        //     width: 280px;
-        //     height: 70px;
-        //     color: white;
-        //     position: absolute;
-        //     top: 11px;
-        //     left: 11px;
-        //     .params {
-        //         position: absolute;
-        //         bottom: 3px;
-        //         left: 80px;
-        //         // background-color: rgba(128, 255, 0, 0.2);////////////////////////
-                
-        //     }
-        // }
         
     }
     .scale_testing_purpose_only {
         width: 200px;
         height: 200px;
-
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        // background-color: rgba(255, 255, 255, 0.2);////////////////////////
         border: 1px solid rgba(255, 255, 255, .1);
         box-sizing: border-box;
         z-index: -1;
-        
     }
+
     .planetContainer {
         position: absolute;
         top: 50%;
@@ -750,32 +529,28 @@ body {
         transform: translate(-50%, -50%);
         width: 200px;
         height: 200px;
-
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: -2;
-        // transition: opacity ease-out .7s;
         transition-property: opacity;
         transition-timing-function: ease-out;
         transition-duration: .7s;
-        // background-color: rgba(127, 255, 212, 0.5);
-
+        
         img {
             width: 120%;
-            // z-index: -2;
         }
-        
+    }
 
-        
-        
-        
+    @keyframes shine{
+        0% {background-color: rgb(255, 255, 255);}
+        50% {background-color: rgb(34, 34, 34);}
+        100% {background-color: rgb(255, 255, 255);}
     }
 
     .star {
         position: absolute;
         animation-name: shine;
-        // animation-duration: 4s;
         animation-iteration-count: infinite;
         z-index: -2;
     }
@@ -784,47 +559,34 @@ body {
         width: 1px;
         height: 1px;
         background-color: white;
-        
-        
     }
     
     .star2 {
         width: 1px;
         height: 1px;
         background-color: white;
-        
-        
     }
     
     .star3 {
         width: 1px;
         height: 1px;
         background-color: rgb(53, 53, 53);
-        
     }
 
     .star4 {
         width: 1px;
         height: 1px;
         background-color: rgb(109, 103, 158);
-        
     }
 
     .star5 {
         width: 3px;
         height: 3px;
         background-color: rgb(255, 255, 255);
-        
-    }
-    @keyframes shine{
-        0% {background-color: rgb(255, 255, 255);}
-        50% {background-color: rgb(34, 34, 34);}
-        100% {background-color: rgb(255, 255, 255);}
     }
 }
 
 ////////////////////////////////////////////////////////
-
 
 .scrollBar input[type="range"] {
     // background-color: chartreuse;
@@ -834,9 +596,11 @@ body {
     // margin: 10px;
     width: 400px;
 }
+
 .scrollBar input[type="range"]:focus {
     outline: none;
 }
+
 /*------------Track------------*/
 .scrollBar input[type="range"]::-webkit-slider-runnable-track {
     // width: 80%;/*working??*/
@@ -845,8 +609,6 @@ body {
     cursor:pointer;
     box-shadow: 0 0 7px #ffffff;
     background: #ffffff;
-    // border-radius: 7px;
-    // border: 1px solid #ffffff;
 }
 
 .scrollBar input[type="range"]::-moz-range-track {
@@ -856,8 +618,6 @@ body {
     cursor: pointer;
     box-shadow: 0 0 7px #ffffff;
     background: #ffffff;
-    // border-radius: 1px;
-    // border: 1px solid #ffffff;
 }
 
 .scrollBar input[type="range"]::-ms-track {
@@ -872,11 +632,8 @@ body {
 
 /*------------Thumb------------*/
 .scrollBar input[type="range"]::-webkit-slider-thumb {
-    // box-shadow: 5px 5px 5px #000031;
-    // border: 3px solid #00001E;
     height: 9px;
     width: 25px;
-    // border-radius: 5px;
     background: #636bd8;
     cursor: pointer;
     -webkit-appearance: none;
@@ -884,50 +641,29 @@ body {
 }
 
 .scrollBar input[type="range"]::-moz-range-thumb {
-    // box-shadow: 1px 1px 1px #000031;
-    // border: 1px solid #00001E;
     height: 9px;
     width: 25px;
-    // border-radius: 15px;
     background: #636bd8;
     cursor: pointer;
 }
 
 .scrollBar input[type="range"]::-ms-thumb {
-    // margin-top: 1px;
-    // box-shadow: 1px 1px 1px #000031;
-    // border: 1px solid #00001E;
     height: 9px;
     width: 25px;
-    // border-radius: 15px;
     background: #636bd8;
     cursor: pointer;
 }
 
-/*------------  ------------*/
 .scrollBar input[type="range"]::-ms-fill-lower {
     background: #74A9D8;
     border: 0px solid #010101;
     border-radius: 2px;
     box-shadow: 1px 1px 1px #000000;
 }
+
 .scrollBar input[type="range"]::-ms-fill-upper {
     background: #74A9D8;
     border: 0px solid #010101;
     border-radius: 2px;
     box-shadow: 1px 1px 1px #000000;
 }
-
-
-// .scrollBar input[type="range"]:focus::-ms-fill-lower {
-//     background: #ffffff;
-//     box-shadow: 0 0 7px #ffffff;
-// }
-// .scrollBar input[type="range"]:focus::-ms-fill-upper {
-//     background: #ffffff;
-//     box-shadow: 0 0 7px #ffffff;
-// }
-// .scrollBar input[type="range"]:focus::-webkit-slider-runnable-track {
-//     background: #ffffff;
-//     box-shadow: 0 0 7px #ffffff;
-// }

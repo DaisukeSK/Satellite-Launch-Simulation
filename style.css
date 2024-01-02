@@ -496,6 +496,17 @@ body .planetContainer {
 body .planetContainer img {
   width: 120%;
 }
+@keyframes shine {
+  0% {
+    background-color: rgb(255, 255, 255);
+  }
+  50% {
+    background-color: rgb(34, 34, 34);
+  }
+  100% {
+    background-color: rgb(255, 255, 255);
+  }
+}
 body .star {
   position: absolute;
   animation-name: shine;
@@ -526,17 +537,6 @@ body .star5 {
   width: 3px;
   height: 3px;
   background-color: rgb(255, 255, 255);
-}
-@keyframes shine {
-  0% {
-    background-color: rgb(255, 255, 255);
-  }
-  50% {
-    background-color: rgb(34, 34, 34);
-  }
-  100% {
-    background-color: rgb(255, 255, 255);
-  }
 }
 
 .scrollBar input[type=range] {
@@ -600,7 +600,6 @@ body .star5 {
   cursor: pointer;
 }
 
-/*------------  ------------*/
 .scrollBar input[type=range]::-ms-fill-lower {
   background: #74A9D8;
   border: 0px solid #010101;
