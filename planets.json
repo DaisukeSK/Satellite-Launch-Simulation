@@ -4,7 +4,8 @@
         "mass":9.393,
         "mass2":20,
         "image":"./assets/ceres.png",
-        "description": "TEST Ceres"
+        "description": "TEST Ceres",
+        "symbol":"./assets/ceres.svg"
     },
     "Charon":{
         "diameter":1208,

@@ -199,34 +199,41 @@ fetch("planets.json")
             // setTimeout(()=>{
             //     satellite.style.transitionProperty="opacity, top"
             // },0)
-            
-            changeRatio=1/(data[val.querySelector(".pName").innerText].diameter/data["Earth"].diameter)
-            px=px_km/changeRatio // Is this necessary?
-            
-            clickPlanetList(e.target,data)
+            if(e.target.closest("li").classList[2]=="Sirius-B"){
 
-            planetLi.forEach(val=>{
-                val.style.width=liBaseWidth+"px"
-                val.style.background="none"
-            })
-
-            const num=e.target.closest(".planetLi").classList[1].split("planetLi")[1]
-            listBrowsing(null,num,data)
+                alert("Sorry, simulation is unavailable with Sirius-B because of its too massive property values.")
             
-            scrollInput.value=scrollInput.max*(num-1)/(planetLi.length-1)
-            satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().height/2-changeRatio*parseInt(inputAlt.value)/px_km+"px"
+            }else{
 
-            planetList.style.transitionDelay=".5s"
-            scrollBar.style.transitionDelay=".5s"
-            satellite.style.transitionDelay= ".7s, 0s";
-            planetContainer.style.transitionDelay= ".7s";
+                changeRatio=1/(data[val.querySelector(".pName").innerText].diameter/data["Earth"].diameter)
+                px=px_km/changeRatio // Is this necessary?
+                
+                clickPlanetList(e.target,data)
+    
+                planetLi.forEach(val=>{
+                    val.style.width=liBaseWidth+"px"
+                    val.style.background="none"
+                })
+    
+                const num=e.target.closest(".planetLi").classList[1].split("planetLi")[1]
+                listBrowsing(null,num,data)
+                
+                scrollInput.value=scrollInput.max*(num-1)/(planetLi.length-1)
+                satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().height/2-changeRatio*parseInt(inputAlt.value)/px_km+"px"
+    
+                planetList.style.transitionDelay=".5s"
+                scrollBar.style.transitionDelay=".5s"
+                satellite.style.transitionDelay= ".7s, 0s";
+                planetContainer.style.transitionDelay= ".7s";
+                
+                left_right.forEach(val=>{
+                    val.style.transitionDelay=".7s"
+                })
+    
+                listUp()
+                checkSatelliteAlt()
+            }
             
-            left_right.forEach(val=>{
-                val.style.transitionDelay=".7s"
-            })
-
-            listUp()
-            checkSatelliteAlt()
         }
     })//planetLi.forEach, onclick
 
