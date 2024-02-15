@@ -51,15 +51,15 @@ body {
         left: 50%;
         transform: translate(-50%,-50%);
         width: 70%;
-        height: 70vh;
+        // height: 70vh;
         background-color: darkgrey;
         z-index: 3;
         border: 1px solid #dddddd;
         border-radius: 15px;
         transition: all ease-out 1s;
-        padding: 30px 0;
+        padding: 0 30px;
         box-sizing: border-box;
-        text-align: center;
+        // text-align: center;
 
         .close {
             position: absolute;
@@ -80,33 +80,48 @@ body {
 
         p {
             font-size: 1.1em;
+            // margin-left: 30px;
         }
 
-        .formulaFlex {
-            width: fit-content;
-            display: flex;
-            align-items: center;
-            margin: 20px auto;
-            font-size: 1.2em;
-
-            div {
-                margin: 0 3px;
-            }
-            .MG {
-                border-bottom: 1px solid black;
-            }
-        }
-
-        .paramsFlex {
+        .parentFlex {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            align-items: center;
+            width: fit-content;
+            margin: 0 auto;
+            background-color: #636bd856;
+            padding: 10px 30px;
 
-            div {
-                margin: 0 20px;
+            .formulaFlex {
+                font-style: italic;
+                width: fit-content;
+                display: flex;
+                align-items: center;
+                // margin: 20px 0;
+                margin-right: 50px;
+                font-size: 1.2em;
+    
+                div {
+                    margin: 0 3px;
+                }
+                .MG {
+                    border-bottom: 1px solid black;
+                }
+            }
+    
+            .params {
+                // background-color: antiquewhite;
+                // display: flex;
+                // justify-content: center;
+                // flex-wrap: wrap;
+                // align-items: center;
+    
+                div {
+                    // margin: 0 20px;
+                    text-align: left;
+                }
             }
         }
+
     }
 
     .instructionBG {

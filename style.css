@@ -45,15 +45,13 @@ body .instruction {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
-  height: 70vh;
   background-color: darkgrey;
   z-index: 3;
   border: 1px solid #dddddd;
   border-radius: 15px;
   transition: all ease-out 1s;
-  padding: 30px 0;
+  padding: 0 30px;
   box-sizing: border-box;
-  text-align: center;
 }
 body .instruction .close {
   position: absolute;
@@ -71,28 +69,32 @@ body .instruction .close rect, body .instruction .close path {
 body .instruction p {
   font-size: 1.1em;
 }
-body .instruction .formulaFlex {
+body .instruction .parentFlex {
+  display: flex;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  background-color: rgba(99, 107, 216, 0.337254902);
+  padding: 10px 30px;
+}
+body .instruction .parentFlex .formulaFlex {
+  font-style: italic;
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
-  margin: 20px auto;
+  margin-right: 50px;
   font-size: 1.2em;
 }
-body .instruction .formulaFlex div {
+body .instruction .parentFlex .formulaFlex div {
   margin: 0 3px;
 }
-body .instruction .formulaFlex .MG {
+body .instruction .parentFlex .formulaFlex .MG {
   border-bottom: 1px solid black;
 }
-body .instruction .paramsFlex {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-}
-body .instruction .paramsFlex div {
-  margin: 0 20px;
+body .instruction .parentFlex .params div {
+  text-align: left;
 }
 body .instructionBG {
   position: absolute;
