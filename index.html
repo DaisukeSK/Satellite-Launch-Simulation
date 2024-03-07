@@ -53,18 +53,31 @@
 
             </svg>
 
-            <svg class="instructionSVG" width="100%" height="100">
+            <svg class="instructionSVG" width="100%" height="170">
                 
-                <text x="50" y="75" fill="white">Input and launch.</text>
+                <!-- <text x="50" y="75" fill="white">Input and launch.</text> -->
+                <text x="30" y="80" width='100%' fill="white">Input launch velocity and altitude.</text>
+                <text x="30" y="100" width='100%' fill="white">And click "Launch" to start.</text>
                 
-                <path d="m 20 90 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange"></path>
-                <path d="m 20 90 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange" filter="blur(5px)"></path>
+                <path d="m 20 130 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange"></path>
+                <path d="m 20 130 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange" filter="blur(5px)"></path>
             </svg>
             
             <!-- <div class="parameters">
                 </div> -->
+            <div class="leftGridTop">
+                <label>Launch velocity&nbsp;[m/s]</label>
+                <input type="text" name="velo" value="1000" required/>
+                <label>Launch Altitude&nbsp;[km]</label>
+                <input type="text" name="alt" value="1000" required/>
+                <input class="launchBtn" type="submit" value="Launch"/>
+                <input class="abortBtn" type="submit" value="Abort" disabled/>
+
+
+            </div>
+                
             <div class="leftGrid">
-                <div class="use2columns leftGridTop">
+                <!-- <div class="use2columns leftGridTop">
                     <label>Launch velocity&nbsp;[m/s]</label>
                     <input type="text" name="velo" value="1000" required/>
                 </div>
@@ -72,28 +85,27 @@
                     <label>Launch Altitude&nbsp;[km]</label>
                     <input type="text" name="alt" value="1000" required/>
                 </div>
-                <!-- <label>Observation</label>
-                <input type="range" class="observation" name="observation" min="0" max="2" value="0" required/> -->
+                
                 <div class="use2columns leftGridTop">
                     <input class="launchBtn" type="submit" value="Launch"/>
                     <input class="abortBtn" type="submit" value="Abort" disabled/>
-                </div>
+                </div> -->
 
-                <div><b>Launch velocity:</b></div>
+                <div>Launch velocity:</div>
                 <div class="toRight"><span class="initVelo"></span>&nbsp;[m/s]</div>
 
-                <div><b>Launch Altitude:</b></div>
+                <div>Launch Altitude:</div>
                 <div class="toRight"><span class="initAlt"></span>&nbsp;[km]</div>
 
                 <div class="use2columns timeFlex">
-                    <div><b>Time:</b></div>
+                    <div>Time:</div>
                     <div class="time">-</div>
                 </div>
 
-                <div><b>Altitude:</b></div>
+                <div>Altitude:</div>
                 <div class="toRight"><span class="alt">-</span>&nbsp;[km]</div>
 
-                <div class="use2columns"><b>Garvtity Acceleration:</b></div>
+                <div class="use2columns">Garvtity Acceleration:</div>
 
                 <div class="use2columns toRight">g =&nbsp;
                     <span class="gravity">-</span>&nbsp;[m<sup>1</sup>s<sup>-2</sup>]

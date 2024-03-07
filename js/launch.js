@@ -25,6 +25,19 @@ const abortBtn = $(".abortBtn")
 const question = $(".questionSymbolHolder")
 const altSpan = $(".alt")
 
+const launchBtnBG='#16B31B'
+const abortBtnBG='#D94242'
+const launchBD='green'
+const abortBD='red'
+const disabledBG='grey'
+const disabledStr='#555555'
+
+launchBtn.css("background-color",launchBtnBG)
+launchBtn.css("border",`1px solid ${launchBD}`)
+abortBtn.css("background-color",disabledBG)
+abortBtn.css("color",disabledStr)
+abortBtn.css("border",`1px solid ${disabledStr}`)
+
 const center_x = window.innerWidth/2;//center coordinate of earth 350+110
 const center_y =  window.innerHeight/2;//center coordinate of earth 150+110
 const size = satellite.css("width").split("px")[0];//satelite size(px)
@@ -59,7 +72,13 @@ launchBtn.click(()=>{
         inputVelo.attr("disabled",true)
         inputAlt.attr("disabled",true)
         launchBtn.attr("disabled",true)
+        launchBtn.css("background-color",disabledBG)
+        launchBtn.css("color",disabledStr)
+        launchBtn.css("border",`1px solid ${disabledStr}`)
         abortBtn.attr("disabled",false)
+        abortBtn.css("background-color",abortBtnBG)
+        abortBtn.css("color",'#ffffff')
+        abortBtn.css("border",`1px solid ${abortBD}`)
 
         launchDirectionImg.css("display", "none")
         showInitParams.css("display", "none")
@@ -191,9 +210,15 @@ const Reset=()=>{
     arrowDown.css("top","0")
     arrowUp.css("top","0")
     abortBtn.attr("disabled",true)
+    abortBtn.css("background-color",disabledBG)
+    abortBtn.css("color",disabledStr)
+    abortBtn.css("border",`1px solid ${disabledStr}`)
     launchDirectionImg.css("display", "flex")
     showInitParams.css("display", "block")
     launchBtn.attr("disabled",false)
+    launchBtn.css("background-color",launchBtnBG)
+    launchBtn.css("color",'#ffffff')
+    launchBtn.css("border",`1px solid ${launchBD}`)
     inputVelo.attr("disabled",false)
     inputAlt.attr("disabled",false)
     altSpan.text("-")

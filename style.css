@@ -7,7 +7,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: "Times New Roman", Times, Arial, serif;
+  font-family: Helvetica, Arial, serif, "Times New Roman", Times;
 }
 body .questionSymbolHolder {
   position: absolute;
@@ -118,7 +118,7 @@ body .history {
 body .flex {
   position: relative;
   height: 100vh;
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
 }
 body .flex .left, body .flex .right {
   position: absolute;
@@ -157,33 +157,15 @@ body .flex .left .rectSVG {
   z-index: -1;
   transition: opacity 1s ease-out;
 }
-body .flex .left .rectSVG rect, body .flex .left .rectSVG path {
-  fill: white;
+body .flex .left .rectSVG rect {
+  stroke: white;
+  stroke-width: 7px;
+  fill: none;
   animation-name: blink;
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-fill-mode: both;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-}
-body .flex .left .rectSVG rect {
-  fill: none;
-  stroke: white;
-  stroke-width: 7px;
-}
-body .flex .left .rectSVG .arrow1 {
-  animation-delay: 1s;
-}
-body .flex .left .rectSVG .arrow2 {
-  animation-delay: 0.8s;
-}
-body .flex .left .rectSVG .arrow3 {
-  animation-delay: 0.6s;
-}
-body .flex .left .rectSVG .arrow4 {
-  animation-delay: 0.4s;
-}
-body .flex .left .rectSVG .arrow5 {
-  animation-delay: 0.2s;
 }
 body .flex .left .instructionSVG {
   overflow: visible;
@@ -194,52 +176,47 @@ body .flex .left .instructionSVG {
 }
 body .flex .left .instructionSVG path, body .flex .left .instructionSVG text {
   animation-name: blink;
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-fill-mode: both;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
-body .flex .left .arrowSVG {
-  position: absolute;
-  top: 60px;
-  right: -140px;
-  width: 150px;
-  height: 100px;
-  z-index: -1;
+body .flex .left .leftGridTop {
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+}
+body .flex .left .leftGridTop label {
+  display: block;
+}
+body .flex .left .leftGridTop input[type=text] {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 60%;
+}
+body .flex .left .leftGridTop input[type=submit] {
+  width: 90px;
+  margin: 5px 0 15px;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 2px 0;
+  border: 1px solid rgba(180, 180, 180, 0.384);
+  border-radius: 5px;
 }
 body .flex .left .leftGrid {
   display: grid;
-  grid-template-columns: 135px 80px;
-  grid-template-rows: auto auto auto 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   row-gap: 6px;
   align-items: center;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 10px auto;
+  margin: 0 auto;
 }
 body .flex .left .leftGrid .use2columns {
   grid-column-start: 1;
   grid-column-end: -1;
-}
-body .flex .left .leftGrid .leftGridTop {
-  width: 100%;
-  text-align: center;
-}
-body .flex .left .leftGrid .leftGridTop label {
-  display: block;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto;
-}
-body .flex .left .leftGrid .leftGridTop input[type=text] {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 5px;
-  width: 60%;
-}
-body .flex .left .leftGrid .leftGridTop input[type=submit] {
-  width: 70px;
-  margin: 5px 0 15px;
 }
 body .flex .left .leftGrid .timeFlex {
   display: flex;
@@ -267,6 +244,7 @@ body .flex .right .rightTop .planetName {
   justify-content: space-evenly;
   align-items: center;
   margin: 0 auto;
+  color: #ffffff;
 }
 body .flex .right .rightTop .planetName img {
   width: 18px;
