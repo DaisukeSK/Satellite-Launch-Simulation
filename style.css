@@ -189,14 +189,20 @@ body .flex .left .leftGridTop {
 body .flex .left .leftGridTop label {
   display: block;
 }
-body .flex .left .leftGridTop input[type=text] {
+body .flex .left .leftGridTop input[type=number] {
+  -moz-appearance: textfield;
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
   width: 60%;
 }
-body .flex .left .leftGridTop input[type=text]:focus {
+body .flex .left .leftGridTop input[type=number]:focus {
   outline: none;
+}
+body .flex .left .leftGridTop input::-webkit-outer-spin-button,
+body .flex .left .leftGridTop input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 body .flex .left .leftGridTop .buttonFlex {
   display: flex;
@@ -211,8 +217,23 @@ body .flex .left .leftGridTop .buttonFlex input[type=submit] {
   border: 1px solid rgba(180, 180, 180, 0.384);
   border-radius: 5px;
 }
+body .flex .left .leftGridTop .buttonFlex .launchBtn:disabled, body .flex .left .leftGridTop .buttonFlex .abortBtn:disabled {
+  background-color: rgb(110, 110, 110);
+  color: rgb(70, 70, 70);
+  pointer-events: none;
+}
+body .flex .left .leftGridTop .buttonFlex .abortBtn {
+  background-color: rgb(228, 42, 42);
+}
+body .flex .left .leftGridTop .buttonFlex .abortBtn:hover {
+  background-color: rgb(189, 35, 35);
+}
 body .flex .left .leftGridTop .buttonFlex .launchBtn {
   margin-right: 10px;
+  background-color: rgb(53, 211, 32);
+}
+body .flex .left .leftGridTop .buttonFlex .launchBtn:hover {
+  background-color: rgb(41, 168, 25);
 }
 body .flex .left hr {
   border: none;

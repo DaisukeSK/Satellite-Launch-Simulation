@@ -225,15 +225,24 @@ body {
                     // width: fit-content;
                     // margin: 0 auto;
                 }
-                input[type="text"] {
+                input[type="number"] {
+                    -moz-appearance: textfield;
                     display: block;
                     margin: 0 auto;
                     margin-bottom: 10px;
                     width: 60%;
+                    // background-color: #acb2e2;
+                    // border: 1px solid grey;
                     
                     &:focus {
                         outline: none;
+                        // background-color: #a1a5dd;
                     } 
+                }
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
                 }
                 .buttonFlex {
                     display: flex;
@@ -248,12 +257,29 @@ body {
                         border: 1px solid rgba(180, 180, 180, 0.384);
                         border-radius: 5px;
                     }
-                    .launchBtn {
-                        margin-right: 10px;
-                        // border: 1px solid rgb(29, 153, 36);
+                    .launchBtn, .abortBtn {
+                        // border: 1px solid rgb(199, 35, 35);
+                        &:disabled {
+                            background-color: rgb(110, 110, 110);
+                            color: rgb(70, 70, 70);
+                            pointer-events: none;
+                        }
                     }
                     .abortBtn {
                         // border: 1px solid rgb(199, 35, 35);
+                        background-color: rgb(228, 42, 42);
+                        &:hover {
+                            background-color: rgb(189, 35, 35);
+                        }
+                    }
+                    .launchBtn {
+                        margin-right: 10px;
+                        // border: 1px solid rgb(29, 153, 36);
+                        background-color: rgb(53, 211, 32);
+                        &:hover {
+                            background-color: rgb(41, 168, 25);
+                        }
+                       
                     }
                 }
             }

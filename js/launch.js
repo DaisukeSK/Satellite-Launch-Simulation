@@ -25,18 +25,11 @@ const abortBtn = $(".abortBtn")
 const question = $(".questionSymbolHolder")
 const altSpan = $(".alt")
 
-const launchBtnBG='#0D9C11'
-const abortBtnBG='#EB2E2E'
-const launchBD='#0A850E'
-const abortBD='#C21717'
-const disabledBG='grey'
-const disabledStr='#555555'
-
-launchBtn.css("background-color",launchBtnBG)
-launchBtn.css("border",`1px solid ${launchBD}`)
-abortBtn.css("background-color",disabledBG)
-abortBtn.css("color",disabledStr)
-abortBtn.css("border",`1px solid ${disabledStr}`)
+// launchBtn.css("background-color",launchBtnBG)
+// launchBtn.css("border",`1px solid ${launchBD}`)
+// abortBtn.css("background-color",disabledBG)
+// abortBtn.css("color",disabledStr)
+// abortBtn.css("border",`1px solid ${disabledStr}`)
 
 const center_x = window.innerWidth/2;//center coordinate of earth 350+110
 const center_y =  window.innerHeight/2;//center coordinate of earth 150+110
@@ -62,9 +55,9 @@ launchBtn.click(()=>{
     ini_velo=inputVelo.val()
     ini_alt=inputAlt.val()
 
-    if(!ini_alt/2 || !ini_velo/2 || ini_alt<=0){
+    if(ini_alt<=0){
 
-        alert("Please enter parameters correctly.")
+        alert("Please set a positive number to launch altitude.")
 
     }else{
 
@@ -72,13 +65,13 @@ launchBtn.click(()=>{
         inputVelo.attr("disabled",true)
         inputAlt.attr("disabled",true)
         launchBtn.attr("disabled",true)
-        launchBtn.css("background-color",disabledBG)
-        launchBtn.css("color",disabledStr)
-        launchBtn.css("border",`1px solid ${disabledStr}`)
+        // launchBtn.css("background-color",disabledBG)
+        // launchBtn.css("color",disabledStr)
+        // launchBtn.css("border",`1px solid ${disabledStr}`)
         abortBtn.attr("disabled",false)
-        abortBtn.css("background-color",abortBtnBG)
-        abortBtn.css("color",'#ffffff')
-        abortBtn.css("border",`1px solid ${abortBD}`)
+        // abortBtn.css("background-color",abortBtnBG)
+        // abortBtn.css("color",'#ffffff')
+        // abortBtn.css("border",`1px solid ${abortBD}`)
 
         launchDirectionImg.css("display", "none")
         showInitParams.css("display", "none")
@@ -210,15 +203,15 @@ const Reset=()=>{
     arrowDown.css("top","0")
     arrowUp.css("top","0")
     abortBtn.attr("disabled",true)
-    abortBtn.css("background-color",disabledBG)
-    abortBtn.css("color",disabledStr)
-    abortBtn.css("border",`1px solid ${disabledStr}`)
+    // abortBtn.css("background-color",disabledBG)
+    // abortBtn.css("color",disabledStr)
+    // abortBtn.css("border",`1px solid ${disabledStr}`)
     launchDirectionImg.css("display", "flex")
     showInitParams.css("display", "block")
     launchBtn.attr("disabled",false)
-    launchBtn.css("background-color",launchBtnBG)
-    launchBtn.css("color",'#ffffff')
-    launchBtn.css("border",`1px solid ${launchBD}`)
+    // launchBtn.css("background-color",launchBtnBG)
+    // launchBtn.css("color",'#ffffff')
+    // launchBtn.css("border",`1px solid ${launchBD}`)
     inputVelo.attr("disabled",false)
     inputAlt.attr("disabled",false)
     altSpan.text("-")
