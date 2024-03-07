@@ -230,32 +230,49 @@ body {
                     margin: 0 auto;
                     margin-bottom: 10px;
                     width: 60%;
+                    
+                    &:focus {
+                        outline: none;
+                    } 
                 }
-                input[type="submit"] {
-                    width: 90px;
-                    margin: 5px 0 15px;
-                    color: #ffffff;
-                    font-size: 1rem;
-                    padding: 2px 0;
-                    border: 1px solid rgba(180, 180, 180, 0.384);
-                    border-radius: 5px;
+                .buttonFlex {
+                    display: flex;
+                    justify-content: center;
+                    margin: 15px 0;
+                    input[type="submit"] {
+                        // margin: 5px 0;
+                        width: 40%;
+                        color: #ffffff;
+                        font-size: 1rem;
+                        padding: 2px;
+                        border: 1px solid rgba(180, 180, 180, 0.384);
+                        border-radius: 5px;
+                    }
+                    .launchBtn {
+                        margin-right: 10px;
+                        // border: 1px solid rgb(29, 153, 36);
+                    }
+                    .abortBtn {
+                        // border: 1px solid rgb(199, 35, 35);
+                    }
                 }
-                .launchBtn {
-                    // border: 1px solid rgb(29, 153, 36);
-                }
-                .abortBtn {
-                    // border: 1px solid rgb(199, 35, 35);
-                }
+            }
+
+            hr {
+                border: none;
+                border-top: 1px solid grey;
             }
 
             .leftGrid {
                 display: grid;
                 grid-template-columns: 70% 30%;
+                grid-template-columns: 135px 80px;
                 grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
                 row-gap: 6px;
                 align-items: center;
                 width: fit-content;
                 margin: 0 auto;
+                // border-top: 1px solid grey;
 
                 .use2columns {
                     grid-column-start: 1;

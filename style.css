@@ -195,18 +195,33 @@ body .flex .left .leftGridTop input[type=text] {
   margin-bottom: 10px;
   width: 60%;
 }
-body .flex .left .leftGridTop input[type=submit] {
-  width: 90px;
-  margin: 5px 0 15px;
+body .flex .left .leftGridTop input[type=text]:focus {
+  outline: none;
+}
+body .flex .left .leftGridTop .buttonFlex {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+body .flex .left .leftGridTop .buttonFlex input[type=submit] {
+  width: 40%;
   color: #ffffff;
   font-size: 1rem;
-  padding: 2px 0;
+  padding: 2px;
   border: 1px solid rgba(180, 180, 180, 0.384);
   border-radius: 5px;
+}
+body .flex .left .leftGridTop .buttonFlex .launchBtn {
+  margin-right: 10px;
+}
+body .flex .left hr {
+  border: none;
+  border-top: 1px solid grey;
 }
 body .flex .left .leftGrid {
   display: grid;
   grid-template-columns: 70% 30%;
+  grid-template-columns: 135px 80px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   row-gap: 6px;
   align-items: center;

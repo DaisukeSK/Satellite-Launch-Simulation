@@ -25,10 +25,10 @@ const abortBtn = $(".abortBtn")
 const question = $(".questionSymbolHolder")
 const altSpan = $(".alt")
 
-const launchBtnBG='#16B31B'
-const abortBtnBG='#D94242'
-const launchBD='green'
-const abortBD='red'
+const launchBtnBG='#0D9C11'
+const abortBtnBG='#EB2E2E'
+const launchBD='#0A850E'
+const abortBD='#C21717'
 const disabledBG='grey'
 const disabledStr='#555555'
 

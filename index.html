@@ -57,7 +57,7 @@
                 
                 <!-- <text x="50" y="75" fill="white">Input and launch.</text> -->
                 <text x="30" y="80" width='100%' fill="white">Input launch velocity and altitude.</text>
-                <text x="30" y="100" width='100%' fill="white">And click "Launch" to start.</text>
+                <text x="30" y="100" width='100%' fill="white">And click "Launch" button to start.</text>
                 
                 <path d="m 20 130 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange"></path>
                 <path d="m 20 130 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange" filter="blur(5px)"></path>
@@ -70,11 +70,17 @@
                 <input type="text" name="velo" value="1000" required/>
                 <label>Launch Altitude&nbsp;[km]</label>
                 <input type="text" name="alt" value="1000" required/>
-                <input class="launchBtn" type="submit" value="Launch"/>
-                <input class="abortBtn" type="submit" value="Abort" disabled/>
+                <div class="buttonFlex">
+
+                    <input class="launchBtn" type="submit" value="Launch"/>
+                    <input class="abortBtn" type="submit" value="Abort" disabled/>
+                    
+                </div>
 
 
             </div>
+
+            <hr/>
                 
             <div class="leftGrid">
                 <!-- <div class="use2columns leftGridTop">
