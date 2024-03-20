@@ -5,7 +5,7 @@ export const planetList=$(".planetList")
 export const scrollInput=document.querySelector(".scrollBar input")
 export const planetContainer = $(".planetContainer")
 export const initAlt = $(".initAlt")
-export const satellite=document.querySelector("#satellite");
+export const satellite=$("#satellite");
 
 // const left_right=document.querySelectorAll(".left, .right")
 const left_right=$(".left, .right")
@@ -30,7 +30,9 @@ export let raitio=[]
 
 
 const clickPlanetList=(E,data)=>{
+    console.log("E",E)
     const pName=E.closest(".planetLi").querySelector(".pName span").textContent
+    // const pName=E.find(".pName span").text()
 
     if(pName=="Ceres" && inputAlt.val()>=500){
         console.log("Ceres selected",inputAlt.val())
@@ -131,9 +133,9 @@ arrowDown.on("click",()=>{
     arrowDown.css("opacity",0)
     arrowUp.css("opacity",1)
     arrowDown.css("z-index",0)
-    satellite.style.transitionDelay= "0s";
+    satellite.css("transitionDelay","0s")
     planetContainer.css("transitionDelay","0s")
-    satellite.style.opacity=0
+    satellite.css("opacity",0)
     planetContainer.css("opacity",0)
 
     // left_right.forEach(val=>{
@@ -163,7 +165,7 @@ const listUp=()=>{
     arrowDown.css("opacity",1)
     arrowDown.css("z-index",2)
     arrowUp.css("opacity",0)
-    satellite.style.opacity=1
+    satellite.css("opacity",1)
     planetContainer.css("opacity",1)
     
     // left_right.forEach(val=>{
@@ -282,12 +284,12 @@ fetch("planets.json")
                 listBrowsing(null,num,data)
                 
                 scrollInput.value=scrollInput.max*(num-1)/(planetLi.length-1)
-                satellite.style.top=window.innerHeight/2-planetContainer.css("height").split("px")[0]/2-changeRatio*parseInt(inputAlt.val())/px_km+"px"
+                satellite.css("top",window.innerHeight/2-planetContainer.css("height").split("px")[0]/2-changeRatio*parseInt(inputAlt.val())/px_km+"px")
     
                 planetList.css("transitionDelay",".5s")
                 // scrollBar.style.transitionDelay=".5s"
                 scrollBar.css("transitionDelay",".5s")
-                satellite.style.transitionDelay= ".7s, 0s";
+                satellite.css("transitionDelay",".7s, 0s")
                 planetContainer.css("transitionDelay",".7s")
                 
                 // left_right.forEach(val=>{
@@ -306,7 +308,7 @@ fetch("planets.json")
 
     ////////////////////////// Onload //////////////////////////
     instruction.css("top",`-${window.innerHeight}px`)
-    satellite.style.top=window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-changeRatio*inputAlt.val()/px+"px"
+    satellite.css("top",window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-changeRatio*inputAlt.val()/px+"px")
 
     makeStar(50, 2);
     makeStar(100, 4);

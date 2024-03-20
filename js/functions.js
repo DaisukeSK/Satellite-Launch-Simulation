@@ -12,13 +12,13 @@ const mddlWidth= +$(".middle").css("width").split("px")[0]
 
 export const checkSatelliteAlt=()=>{
     // showInitParams.style.top= +satellite.style.top.split("px")[0]>=70 ? "-40px":"30px"
-    $((".showInitParams")).css("top",+satellite.style.top.split("px")[0]>=70 ? "-40px":"30px")
+    $((".showInitParams")).css("top",+satellite.css("top").split("px")[0]>=70 ? "-40px":"30px")
 }
 
 
 export const inputAltChange=(num)=>{
     if(num/2){
-        satellite.style.top=window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-num/px+"px"
+        satellite.css("top",window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-num/px+"px")
         $(".showInitAlt").text(parseInt(num).toLocaleString())
         initAlt.text(parseInt(num).toLocaleString())
         checkSatelliteAlt()
