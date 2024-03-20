@@ -1,8 +1,9 @@
 import { checkSatelliteAlt, inputAltChange, convertNum, listBrowsing, makeStar } from "./functions.js"
 
-export const planetList=document.querySelector(".planetList")
+export const planetList=$(".planetList")
+// export const planetList2=document.querySelector(".planetList")
 export const scrollInput=document.querySelector(".scrollBar input")
-export const planetContainer = document.querySelector(".planetContainer")
+export const planetContainer = $(".planetContainer")
 export const initAlt = $(".initAlt")
 export const satellite=document.querySelector("#satellite");
 
@@ -39,8 +40,8 @@ const clickPlanetList=(E,data)=>{
     
     mass=data[pName].mass*(10**data[pName].mass2)
     
-    planetContainer.querySelector("img").src=data[pName].image
-    planetContainer.querySelector("img").style.width=pName=="Saturn"?"211%":"120%"
+    planetContainer.find("img").attr("src",data[pName].image)
+    planetContainer.find("img").css("width",pName=="Saturn"?"211%":"120%")
 
     $(".planetName").html(E.closest(".planetLi").querySelector(".pName").innerHTML)
     $(".planetDescription").text(data[pName].description)
@@ -118,22 +119,22 @@ $(".close").on("click", ()=>{
 // }
 
 arrowDown.on("click",()=>{
-    planetList.style.transitionDelay="0s"
+    planetList.css("transitionDelay","0s")
     scrollBar.css("transitionDelay","0s")
     arrowUp.css("transitionDelay",".7s")
     // arrowUp.style.transitionDelay=".7s"
     // planetList.style.top="50px"
-    planetList.style.top="40%"
-    planetList.style.opacity=1
+    planetList.css("top","40%")
+    planetList.css("opacity",1)
     scrollInput.disabled=false
     scrollBar.css("opacity",1)
     arrowDown.css("opacity",0)
     arrowUp.css("opacity",1)
     arrowDown.css("z-index",0)
     satellite.style.transitionDelay= "0s";
-    planetContainer.style.transitionDelay= "0s";
+    planetContainer.css("transitionDelay","0s")
     satellite.style.opacity=0
-    planetContainer.style.opacity=0
+    planetContainer.css("opacity",0)
 
     // left_right.forEach(val=>{
     //     val.style.transitionDelay="0s";
@@ -155,15 +156,15 @@ const listUp=()=>{
     arrowDown.css("transitionDelay",".7s")
     // arrowUp.style.transitionDelay="0s";
     arrowUp.css("transitionDelay","0s")
-    planetList.style.top="-200px";
-    planetList.style.opacity=0
+    planetList.css("top","-200px")
+    planetList.css("opacity",0)
     scrollInput.disabled=true
     scrollBar.css("opacity",0)
     arrowDown.css("opacity",1)
     arrowDown.css("z-index",2)
     arrowUp.css("opacity",0)
     satellite.style.opacity=1
-    planetContainer.style.opacity=1
+    planetContainer.css("opacity",1)
     
     // left_right.forEach(val=>{
     //     val.style.opacity=1
@@ -211,7 +212,7 @@ fetch("planets.json")
 .then((data)=>{
 
     Object.keys(data).forEach((val,key)=>{
-        planetList.insertAdjacentHTML("beforeend", `
+        planetList.append(`
             <li class='planetLi planetLi${key+1} ${val}'>
                 <div class="planetContainerLi"></div>
                 <div class="planetLiTop">
@@ -231,7 +232,7 @@ fetch("planets.json")
         `)
         
         data[val].symbol &&
-        planetList.children[key].querySelector(".pName").insertAdjacentHTML("beforeend",`<img src="${data[val].symbol}"/>`)
+        planetList.children()[key].querySelector(".pName").insertAdjacentHTML("beforeend",`<img src="${data[val].symbol}"/>`)
         
         key && raitio.push(data[val].diameter/data[Object.keys(data)[key-1]].diameter)
 
@@ -242,8 +243,12 @@ fetch("planets.json")
     liBaseWidth=planetLi[0].getBoundingClientRect().width
     imgWidth=planetImg[0].getBoundingClientRect().width
     saturn=document.querySelector(".planetLi.Saturn")
-    plWidth2=planetList.getBoundingClientRect().width-(liBaseWidth+planetLi[planetLi.length-1].getBoundingClientRect().width)/2
+    // plWidth2=planetList.getBoundingClientRect().width-(liBaseWidth+planetLi[planetLi.length-1].getBoundingClientRect().width)/2
+    plWidth2=+planetList.css("width").split("px")[0]-(liBaseWidth+planetLi[planetLi.length-1].getBoundingClientRect().width)/2
     
+    // console.log("1:",planetList2.getBoundingClientRect().width)
+    console.log("2:",+planetList.css("width").split("px")[0])
+
     scrollInput.oninput=(e)=>{
         listBrowsing(e.target.value,null,data)
     }
@@ -277,13 +282,13 @@ fetch("planets.json")
                 listBrowsing(null,num,data)
                 
                 scrollInput.value=scrollInput.max*(num-1)/(planetLi.length-1)
-                satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().height/2-changeRatio*parseInt(inputAlt.val())/px_km+"px"
+                satellite.style.top=window.innerHeight/2-planetContainer.css("height").split("px")[0]/2-changeRatio*parseInt(inputAlt.val())/px_km+"px"
     
-                planetList.style.transitionDelay=".5s"
+                planetList.css("transitionDelay",".5s")
                 // scrollBar.style.transitionDelay=".5s"
                 scrollBar.css("transitionDelay",".5s")
                 satellite.style.transitionDelay= ".7s, 0s";
-                planetContainer.style.transitionDelay= ".7s";
+                planetContainer.css("transitionDelay",".7s")
                 
                 // left_right.forEach(val=>{
                 //     val.style.transitionDelay=".7s"
@@ -301,7 +306,7 @@ fetch("planets.json")
 
     ////////////////////////// Onload //////////////////////////
     instruction.css("top",`-${window.innerHeight}px`)
-    satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-changeRatio*inputAlt.val()/px+"px"
+    satellite.style.top=window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-changeRatio*inputAlt.val()/px+"px"
 
     makeStar(50, 2);
     makeStar(100, 4);

@@ -18,7 +18,7 @@ export const checkSatelliteAlt=()=>{
 
 export const inputAltChange=(num)=>{
     if(num/2){
-        satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-num/px+"px"
+        satellite.style.top=window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-num/px+"px"
         $(".showInitAlt").text(parseInt(num).toLocaleString())
         initAlt.text(parseInt(num).toLocaleString())
         checkSatelliteAlt()
@@ -52,7 +52,7 @@ export const listBrowsing=(value,number,jsonData)=>{
 
     if((value==0 && !number)||number==1){// Leftmost li
         
-        planetList.style.left=(mddlWidth-liBaseWidth)/2+"px"
+        planetList.css("left",(mddlWidth-liBaseWidth)/2+"px")
         planetLi[1].style.width=liBaseWidth*raitio[0]+"px"
         planetLi[2].style.width=planetLi[1].getBoundingClientRect().width*raitio[1]+"px"
         
@@ -70,7 +70,7 @@ export const listBrowsing=(value,number,jsonData)=>{
 
         planetLi.forEach(val=> val.style.width=liBaseWidth+"px")
 
-        planetList.style.left=(planetLi[planetLi.length-1].getBoundingClientRect().width+mddlWidth)/2-planetList.getBoundingClientRect().width+"px"
+        planetList.css("left",(planetLi[planetLi.length-1].getBoundingClientRect().width+mddlWidth)/2-planetList.css("width").split("px")[0]+"px")
         planetLi[planetLi.length-1].style.backgroundColor=planetLiBGcolor1// for testing purpose only
         
         planetImg[planetLi.length-1].style.width=imgWidth+"px"
@@ -88,12 +88,14 @@ export const listBrowsing=(value,number,jsonData)=>{
 
         if(number){
             const left3=-liBaseWidth*number+mddlWidth/2+planetLi[number-1].getBoundingClientRect().width/2
-            planetList.style.left=left3+"px"
+            // planetList.style.left=
+            planetList.css("left",left3+"px")
         }else{
-            planetList.style.left=(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.max+"px"
+            // planetList.style.left=(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.max+"px"
+            planetList.css("left",(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.max+"px")
         }
         
-        const widthSum=mddlWidth/2-(+planetList.style.left.split("px")[0])
+        const widthSum=mddlWidth/2-(+planetList.css("left").split("px")[0])
         
         // let target=[]
         let bool=false
@@ -113,7 +115,7 @@ export const listBrowsing=(value,number,jsonData)=>{
                     sum-=planetLi[key].getBoundingClientRect().width + planetLi[key-1].getBoundingClientRect().width/2
                     
                     const Dis_2middles=(planetLi[key-1].getBoundingClientRect().width + planetLi[key].getBoundingClientRect().width)/2
-                    const movingPx=-(+planetList.style.left.split("px")[0])+mddlWidth/2-sum
+                    const movingPx=-(+planetList.css("left").split("px")[0])+mddlWidth/2-sum
                     const percent=movingPx/Dis_2middles
 
                     const baseDis1=jsonData[planetLi[key-1].querySelector(".pName span").textContent].diameter
