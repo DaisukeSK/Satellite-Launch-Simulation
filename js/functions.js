@@ -1,7 +1,8 @@
 import { planetContainer,initAlt,satellite,px, imgWidth,planetLi,planetList,liBaseWidth,raitio,planetImg,scrollInput,plWidth2,saturn } from "./main.js"
 
-const showInitParams = document.querySelector(".showInitParams")
-const innerScale = document.querySelector(".innerScale")
+// const showInitParams = document.querySelector(".showInitParams")
+// const innerScale = document.querySelector(".innerScale")
+const innerScale = $(".innerScale")
 const imgWidthPercent="84%"//Use the same value as CSS
 const imgWidthPercentSaturn="123%"//Use the same value as CSS
 const planetLiBGcolor1="none"// for testing purpose only
@@ -10,7 +11,8 @@ const mddlWidth= +$(".middle").css("width").split("px")[0]
 
 
 export const checkSatelliteAlt=()=>{
-    showInitParams.style.top= +satellite.style.top.split("px")[0]>=70 ? "-40px":"30px"
+    // showInitParams.style.top= +satellite.style.top.split("px")[0]>=70 ? "-40px":"30px"
+    $((".showInitParams")).css("top",+satellite.style.top.split("px")[0]>=70 ? "-40px":"30px")
 }
 
 
@@ -18,14 +20,14 @@ export const inputAltChange=(num)=>{
     if(num/2){
         satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-num/px+"px"
         $(".showInitAlt").text(parseInt(num).toLocaleString())
-        initAlt.innerText=parseInt(num).toLocaleString()
+        initAlt.text(parseInt(num).toLocaleString())
         checkSatelliteAlt()
     }
 }
 
 
 export const convertNum=(num)=>{
-    return `${(Math.round(100*num/(10**(num.toString().length-1))))/100}×10<sup>${num.toString().length-1}</sup>&nbsp;[km]`
+    return `${(Math.round(100*num/(10**(num.toString().length-1))))/100}x10<sup>${num.toString().length-1}</sup>&nbsp;[km]`
 }
 
 
@@ -35,7 +37,8 @@ export const makeStar=(num, classNum)=>{
         const randY=(Math.random()*97)
         const shineIntvl=Math.random()*5+3
         const div='<div class="star'+classNum+' star" style="top:'+randY+'%; left:'+randX+'%; animation-duration: '+shineIntvl+'s"></div>'
-        document.querySelector("body").insertAdjacentHTML("beforeend",div)
+        // document.querySelector("body").insertAdjacentHTML("beforeend",div)
+        $("body").append(div)
     }
 }
 
@@ -60,7 +63,8 @@ export const listBrowsing=(value,number,jsonData)=>{
         planetLi[1].style.backgroundColor=planetLiBGcolor1// for testing purpose only
         planetLi[2].style.background="none"
 
-        innerScale.innerHTML=planetLi[0].querySelector(".diameter").innerHTML
+        // innerScale.innerHTML=planetLi[0].querySelector(".diameter").innerHTML
+        innerScale.html(planetLi[0].querySelector(".diameter").innerHTML)
 
     }else if((value==scrollInput.max && !number)||number==planetLi.length){// Rightmost li
 
@@ -77,8 +81,9 @@ export const listBrowsing=(value,number,jsonData)=>{
         
         planetImg[planetLi.length-4].style.width=imgWidth/raitio[planetLi.length-2]/raitio[planetLi.length-3]/raitio[planetLi.length-4]+"px"
         
-        innerScale.innerHTML=planetLi[planetLi.length-1].querySelector(".diameter").innerHTML
-        
+        // innerScale.innerHTML=planetLi[planetLi.length-1].querySelector(".diameter").innerHTML
+        innerScale.html(planetLi[planetLi.length-1].querySelector(".diameter").innerHTML)
+
     }else{
 
         if(number){
@@ -115,7 +120,8 @@ export const listBrowsing=(value,number,jsonData)=>{
                     const baseDis2=jsonData[planetLi[key].querySelector(".pName span").textContent].diameter
                     const difference=baseDis2-baseDis1
 
-                    innerScale.innerHTML=convertNum(Math.round(baseDis1+difference*percent))
+                    // innerScale.innerHTML=convertNum(Math.round(baseDis1+difference*percent))
+                    innerScale.html(convertNum(Math.round(baseDis1+difference*percent)))
                     
                     planetLi[key].style.width=liBaseWidth*(1+(raitio[key-1]-1)*(1-percent))+"px"
                     planetImg[key].style.width=imgWidthPercent

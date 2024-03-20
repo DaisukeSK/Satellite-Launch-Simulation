@@ -3,21 +3,22 @@ import { checkSatelliteAlt, inputAltChange, convertNum, listBrowsing, makeStar }
 export const planetList=document.querySelector(".planetList")
 export const scrollInput=document.querySelector(".scrollBar input")
 export const planetContainer = document.querySelector(".planetContainer")
-export const initAlt = document.querySelector(".initAlt")
+export const initAlt = $(".initAlt")
 export const satellite=document.querySelector("#satellite");
 
-const left_right=document.querySelectorAll(".left, .right")
-const scrollBar=document.querySelector(".scrollBar")
-const arrowDown = document.querySelector(".arrowDown")
-const arrowUp = document.querySelector(".arrowUp")
-const inputVelo = document.querySelector('input[name="velo"]')
-const inputAlt = document.querySelector('input[name="alt"]')
-const launchBtn = document.querySelector(".launchBtn")
-const initVelo = document.querySelector(".initVelo")
-const question = document.querySelector(".questionSymbolHolder")
-const instruction = document.querySelector(".instruction")
-const instructionBG = document.querySelector(".instructionBG")
-const close = document.querySelector(".close")
+// const left_right=document.querySelectorAll(".left, .right")
+const left_right=$(".left, .right")
+const scrollBar=$(".scrollBar")
+const arrowDown = $(".arrowDown")
+const arrowUp = $(".arrowUp")
+const inputVelo = $('input[name="velo"]')
+const inputAlt = $('input[name="alt"]')
+const launchBtn = $(".launchBtn")
+const initVelo = $(".initVelo")
+const question = $(".questionSymbolHolder")
+const instruction = $(".instruction")
+const instructionBG = $(".instructionBG")
+// const close = document.querySelector(".close")
 
 let changeRatio=1;
 const px_km=63.78//1px=63.78km
@@ -30,10 +31,10 @@ export let raitio=[]
 const clickPlanetList=(E,data)=>{
     const pName=E.closest(".planetLi").querySelector(".pName span").textContent
 
-    if(pName=="Ceres" && inputAlt.value>=500){
-        console.log("Ceres selected",inputAlt.value)
-        inputAlt.value=500
-        inputAltChange(inputAlt.value)
+    if(pName=="Ceres" && inputAlt.val()>=500){
+        console.log("Ceres selected",inputAlt.val())
+        inputAlt.val(500)
+        inputAltChange(inputAlt.val())
     }
     
     mass=data[pName].mass*(10**data[pName].mass2)
@@ -49,101 +50,158 @@ const clickPlanetList=(E,data)=>{
 }
 
 
-question.onclick=()=>{
-    instruction.style.top=`50%`
-    instruction.style.opacity=1
-    question.style.opacity=0
-    instructionBG.style.display="block"
+// question.onclick=()=>{
+//     instruction.css("top",`50%`)
+//     instruction.css("opacity",1)
+//     question.style.opacity=0
+//     instructionBG.show()
+//     setTimeout(()=>{
+//         instructionBG.css("opacity",1)
+//     },0)
+// }
+
+question.on("click",()=>{
+    instruction.css("top",`50%`)
+    instruction.css("opacity",1)
+    question.css("opacity",0)
+    instructionBG.show()
     setTimeout(()=>{
-        instructionBG.style.opacity=1
+        instructionBG.css("opacity",1)
     },0)
-}
+})
 
-close.onclick=()=>{
-    instruction.style.top=`-${window.innerHeight}px`
-    instruction.style.opacity=0
-    question.style.opacity=1
-    instructionBG.style.opacity=0
+
+$(".close").on("click", ()=>{
+    
+    instruction.css("top",`-${window.innerHeight}px`)
+    instruction.css("opacity",0)
+
+    question.css("opacity",1)
+    instructionBG.css("opacity",0)
     setTimeout(()=>{
-        instructionBG.style.display="none"
+        instructionBG.hide()
     },1000)
-}
+})
 
-arrowDown.onclick=()=>{
+// arrowDown.onclick=()=>{
+//     planetList.style.transitionDelay="0s"
+//     scrollBar.css("transitionDelay","0s")
+//     arrowUp.css("transitionDelay",".7s")
+//     // arrowUp.style.transitionDelay=".7s"
+//     // planetList.style.top="50px"
+//     planetList.style.top="40%"
+//     planetList.style.opacity=1
+//     scrollInput.disabled=false
+//     scrollBar.css("opacity",1)
+//     arrowDown.css("opacity",0)
+//     arrowUp.css("opacity",1)
+//     arrowDown.css("z-index",0)
+//     satellite.style.transitionDelay= "0s";
+//     planetContainer.style.transitionDelay= "0s";
+//     satellite.style.opacity=0
+//     planetContainer.style.opacity=0
+
+//     // left_right.forEach(val=>{
+//     //     val.style.transitionDelay="0s";
+//     //     val.style.opacity=0
+//     //     val.style.zIndex=-1
+//     // })
+//     left_right.each(function(){
+//         $(this).css("opacity",0)
+//         $(this).css("z-index",1)
+//         $(this).css("transitionDelay","0s")
+//     })
+
+//     inputAlt.prop("disabled", true)
+//     inputVelo.prop("disabled", true)
+//     launchBtn.prop("disabled", true)
+// }
+
+arrowDown.on("click",()=>{
     planetList.style.transitionDelay="0s"
-    scrollBar.style.transitionDelay="0s"
-    arrowUp.style.transitionDelay=".7s"
-    planetList.style.top="50px"
+    scrollBar.css("transitionDelay","0s")
+    arrowUp.css("transitionDelay",".7s")
+    // arrowUp.style.transitionDelay=".7s"
+    // planetList.style.top="50px"
+    planetList.style.top="40%"
     planetList.style.opacity=1
     scrollInput.disabled=false
-    scrollBar.style.opacity=1
-    arrowDown.style.opacity=0
-    arrowUp.style.opacity=1
-    arrowDown.style.zIndex=0
+    scrollBar.css("opacity",1)
+    arrowDown.css("opacity",0)
+    arrowUp.css("opacity",1)
+    arrowDown.css("z-index",0)
     satellite.style.transitionDelay= "0s";
     planetContainer.style.transitionDelay= "0s";
     satellite.style.opacity=0
     planetContainer.style.opacity=0
 
-    left_right.forEach(val=>{
-        val.style.transitionDelay="0s";
-        val.style.opacity=0
-        val.style.zIndex=-1
+    // left_right.forEach(val=>{
+    //     val.style.transitionDelay="0s";
+    //     val.style.opacity=0
+    //     val.style.zIndex=-1
+    // })
+    left_right.each(function(){
+        $(this).css("opacity",0)
+        $(this).css("z-index",1)
+        $(this).css("transitionDelay","0s")
     })
 
-    inputAlt.disabled=true
-    inputVelo.disabled=true
-    launchBtn.disabled=true
-}
+    inputAlt.prop("disabled", true)
+    inputVelo.prop("disabled", true)
+    launchBtn.prop("disabled", true)
+})
 
 const listUp=()=>{
-    arrowDown.style.transitionDelay=".7s";
-    arrowUp.style.transitionDelay="0s";
-    planetList.style.top="-500px";
+    arrowDown.css("transitionDelay",".7s")
+    // arrowUp.style.transitionDelay="0s";
+    arrowUp.css("transitionDelay","0s")
+    planetList.style.top="-200px";
     planetList.style.opacity=0
     scrollInput.disabled=true
-    scrollBar.style.opacity=0
-    arrowDown.style.opacity=1
-    arrowDown.style.zIndex=2
-    arrowUp.style.opacity=0
+    scrollBar.css("opacity",0)
+    arrowDown.css("opacity",1)
+    arrowDown.css("z-index",2)
+    arrowUp.css("opacity",0)
     satellite.style.opacity=1
     planetContainer.style.opacity=1
     
-    left_right.forEach(val=>{
-        val.style.opacity=1
-        val.style.zIndex=2
+    // left_right.forEach(val=>{
+    //     val.style.opacity=1
+    //     val.style.zIndex=2
+    // })
+    left_right.each(function(){
+        $(this).css("opacity",1)
+        $(this).css("z-index",2)
     })
 
-    inputAlt.disabled=false
-    inputVelo.disabled=false
-    launchBtn.disabled=false
+    inputAlt.prop("disabled", false)
+    inputVelo.prop("disabled", false)
+    launchBtn.prop("disabled", false)
 
     setTimeout(() => {
-        arrowDown.style.transitionDelay="0s"
+        arrowDown.css("transitionDelay","0s")
     }, 0);
 }
 
-arrowUp.onclick=()=>{
+// arrowUp.onclick=()=>{
+//     listUp()
+// }
+arrowUp.on("click",()=>{
     listUp()
-}
+})
 
-launchBtn.onclick=()=>{
-    if(inputVelo.value && inputAlt.value){
-        $(".rectSVG").css("opacity",0)
-        $(".instructionSVG").css("opacity",0)
+
+inputVelo.on("input", function(){
+    if($(this).val()/2 || $(this).val()==0){
+        $(".showInitVelo").text(parseInt($(this).val()).toLocaleString())
+        initVelo.text(parseInt($(this).val()).toLocaleString())
     }
-}
+})
 
-inputVelo.oninput=(e)=>{
-    if(e.target.value/2 || e.target.value==0){
-        $(".showInitVelo").text(parseInt(e.target.value).toLocaleString())
-        initVelo.innerText=parseInt(e.target.value).toLocaleString()
-    }
-}
 
-inputAlt.oninput=(e)=>{
-    inputAltChange(e.target.value)
-}
+inputAlt.on("input", function(){
+    inputAltChange($(this).val())
+})
 
 ////////////////////////// Main //////////////////////////
 fetch("planets.json")
@@ -219,15 +277,19 @@ fetch("planets.json")
                 listBrowsing(null,num,data)
                 
                 scrollInput.value=scrollInput.max*(num-1)/(planetLi.length-1)
-                satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().height/2-changeRatio*parseInt(inputAlt.value)/px_km+"px"
+                satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().height/2-changeRatio*parseInt(inputAlt.val())/px_km+"px"
     
                 planetList.style.transitionDelay=".5s"
-                scrollBar.style.transitionDelay=".5s"
+                // scrollBar.style.transitionDelay=".5s"
+                scrollBar.css("transitionDelay",".5s")
                 satellite.style.transitionDelay= ".7s, 0s";
                 planetContainer.style.transitionDelay= ".7s";
                 
-                left_right.forEach(val=>{
-                    val.style.transitionDelay=".7s"
+                // left_right.forEach(val=>{
+                //     val.style.transitionDelay=".7s"
+                // })
+                left_right.each(function(){
+                    $(this).css("transitionDelay",".7s")
                 })
     
                 listUp()
@@ -238,8 +300,8 @@ fetch("planets.json")
     })//planetLi.forEach, onclick
 
     ////////////////////////// Onload //////////////////////////
-    instruction.style.top=`-${window.innerHeight}px`
-    satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-changeRatio*inputAlt.value/px+"px"
+    instruction.css("top",`-${window.innerHeight}px`)
+    satellite.style.top=window.innerHeight/2-planetContainer.getBoundingClientRect().width/2-changeRatio*inputAlt.val()/px+"px"
 
     makeStar(50, 2);
     makeStar(100, 4);
@@ -253,6 +315,6 @@ fetch("planets.json")
     clickPlanetList(document.querySelector("li.Earth"),data)
     checkSatelliteAlt()
 
-    initVelo.innerText=parseInt(inputVelo.value).toLocaleString()
-    initAlt.innerText=parseInt(inputAlt.value).toLocaleString()
+    initVelo.text(parseInt(inputVelo.val()).toLocaleString())
+    initAlt.text(parseInt(inputAlt.val()).toLocaleString())
 })// End of fetch("planets.json")

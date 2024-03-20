@@ -401,7 +401,7 @@ body {
             .scrollBar {
                 position: absolute;
                 width: fit-content;
-                top: 470px;
+                top: 80%;
                 left: 50%;
                 transform: translateX(-50%);
                 height: fit-content;
@@ -445,7 +445,8 @@ body {
                 height: 400px;
                 width: fit-content;
                 position: absolute;
-                top: -400px;
+                top: -200px;
+                transform: translateY(-50%);
                 opacity: 0;
                 list-style: none;
                 margin: 0;

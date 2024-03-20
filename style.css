@@ -338,7 +338,7 @@ body .flex .middle .scrollBar {
   position: absolute;
   width: -moz-fit-content;
   width: fit-content;
-  top: 470px;
+  top: 80%;
   left: 50%;
   transform: translateX(-50%);
   height: -moz-fit-content;
@@ -381,7 +381,8 @@ body .flex .middle .planetList {
   width: -moz-fit-content;
   width: fit-content;
   position: absolute;
-  top: -400px;
+  top: -200px;
+  transform: translateY(-50%);
   opacity: 0;
   list-style: none;
   margin: 0;

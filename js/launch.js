@@ -80,6 +80,9 @@ launchBtn.click(()=>{
         arrowUp.css("top","-60px")
         question.css("left","-50px")
 
+        $(".rectSVG").css("opacity",0)
+        $(".instructionSVG").css("opacity",0)
+
         // Keep variables below inside onclick function to initialize them everytime launch button is clicked
         
         let d_x;//storing current position tempolarily

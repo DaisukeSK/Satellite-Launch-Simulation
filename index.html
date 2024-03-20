@@ -9,7 +9,6 @@
 
 </head>
 <body>
-
     
     <div class="questionSymbolHolder">
         <svg class="questionSymbol" width="30" height="30" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ea1a1a" stroke="#ea1a1a">
@@ -28,8 +27,6 @@
         <div class="about">About this app.</div>
     </div>
 
-
-    
     <div class="instructionBG"></div>
     <div class="instruction">
         <svg class="close" width="20" height="20">
@@ -40,8 +37,7 @@
         <script src="./js/include.js"></script>
         <div></div>
     </div>
-    
-    
+
     <canvas class="history"></canvas><!-- Direct child of body -->
     
     <div class="flex"><!-- Direct child of body -->
@@ -63,8 +59,6 @@
                 <path d="m 20 130 l 15 -10 h-10 l-15 10 h170 v-1 h-170" fill="orange" filter="blur(5px)"></path>
             </svg>
             
-            <!-- <div class="parameters">
-                </div> -->
             <div class="leftGridTop">
                 <label>Launch velocity&nbsp;[m/s]</label>
                 <input type="number" name="velo" value="1000" required/>
@@ -77,25 +71,11 @@
                     
                 </div>
 
-
             </div>
 
             <hr/>
                 
             <div class="leftGrid">
-                <!-- <div class="use2columns leftGridTop">
-                    <label>Launch velocity&nbsp;[m/s]</label>
-                    <input type="text" name="velo" value="1000" required/>
-                </div>
-                <div class="use2columns leftGridTop">
-                    <label>Launch Altitude&nbsp;[km]</label>
-                    <input type="text" name="alt" value="1000" required/>
-                </div>
-                
-                <div class="use2columns leftGridTop">
-                    <input class="launchBtn" type="submit" value="Launch"/>
-                    <input class="abortBtn" type="submit" value="Abort" disabled/>
-                </div> -->
 
                 <div>Launch velocity:</div>
                 <div class="toRight"><span class="initVelo"></span>&nbsp;[m/s]</div>
@@ -121,8 +101,7 @@
         </div><!-- .left -->
             
         <div class="middle">
-            <!-- <div class="middleLeft"></div>
-            <div class="middleRight"></div> -->
+
             <div class="arrowDown">
 
                 <svg width="60" height="50">
@@ -138,15 +117,12 @@
             </div>
             <div class="arrowUp">
                 <svg width="60" height="50">
-                    
-                    
+
                     <path d="M10 40 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white"/>
                     <path d="M10 30 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white"/>
                     <path class="arrowShadow" d="M10 40 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white" filter="blur(7px)"/>
                     <path class="arrowShadow" d="M10 30 l5 0 l15 -15 l15 15 l5 0 l-20 -20 Z" fill="white" filter="blur(7px)"/>
-                    
-                    
-                    
+
                 </svg>
             </div>
             
@@ -204,9 +180,7 @@
     <!--//////// Direct child of body ////////-->
     <div id="satellite">
         <img  class="satelliteImg" src="./assets/satellite.png"/>
-        <!-- <div> -->
         <img class="launchDirectionImg" src="./assets/rightArrow.svg"/>
-        <!-- </div> -->
         <div class="showInitParams">
             <div>Launch velocity: <span class="showInitVelo">1,000</span>&nbsp;[m/s]</div>
             <div>Launch altitude: <span class="showInitAlt">1,000</span>&nbsp;[km]</div>
@@ -229,7 +203,6 @@
 
     
     <script src="./js/jquery-3.7.1.min.js"></script>
-    <!-- <script type="module" src="./js/index.js"></script> -->
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/launch.js"></script>
 
