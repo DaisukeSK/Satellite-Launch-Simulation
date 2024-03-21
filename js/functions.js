@@ -66,7 +66,7 @@ export const listBrowsing=(value,number,jsonData)=>{
         // innerScale.innerHTML=planetLi[0].querySelector(".diameter").innerHTML
         innerScale.html(planetLi[0].querySelector(".diameter").innerHTML)
 
-    }else if((value==scrollInput.max && !number)||number==planetLi.length){// Rightmost li
+    }else if((value==scrollInput.attr("max") && !number)||number==planetLi.length){// Rightmost li
 
         planetLi.forEach(val=> val.style.width=liBaseWidth+"px")
 
@@ -92,7 +92,7 @@ export const listBrowsing=(value,number,jsonData)=>{
             planetList.css("left",left3+"px")
         }else{
             // planetList.style.left=(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.max+"px"
-            planetList.css("left",(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.max+"px")
+            planetList.css("left",(mddlWidth-liBaseWidth)/2-plWidth2*value/scrollInput.attr("max")+"px")
         }
         
         const widthSum=mddlWidth/2-(+planetList.css("left").split("px")[0])
@@ -167,8 +167,8 @@ export const listBrowsing=(value,number,jsonData)=>{
                         planetLi[key-4]?.classList[2]=="Saturn"
                         
                         ){
-                        saturn.querySelector(".planetImg").style.width=saturn.querySelector(".planetImg").getBoundingClientRect().width*1.77+"px"
-                        saturn.querySelector(".planetLiTop").style.marginBottom=saturn.querySelector(".planetImg").getBoundingClientRect().height*1.07+"px"
+                        saturn.find(".planetImg").css("width",saturn.find(".planetImg").css("width").split("px")[0]*1.77+"px")
+                        saturn.find(".planetLiTop").css("margin-bottom",saturn.find(".planetImg").css("height").split("px")[0]*1.07+"px")
                     }
                 }
             }

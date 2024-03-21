@@ -6,23 +6,22 @@
 
 //window.pageYOffset, window.pageXOffset : scrolled amount
 
-// "use strict";
 
-import { mass, px } from "./main.js"
+import { mass, px, satellite, arrowDown, arrowUp, launchBtn, inputVelo, inputAlt, question } from "./main.js"
 
 const gravitySpan = $(".gravity")
-const satellite = $("#satellite")
+// const satellite = $("#satellite")
 const time = $(".time")
 // const point = $(".point")//????
-const arrowDown = $(".arrowDown")
-const arrowUp = $(".arrowUp")
+// const arrowDown = $(".arrowDown")
+// const arrowUp = $(".arrowUp")
 const launchDirectionImg = $(".launchDirectionImg")
 const showInitParams = $(".showInitParams")
-const inputVelo = $('input[name="velo"]')
-const inputAlt = $('input[name="alt"]')
-const launchBtn = $(".launchBtn")
+// const inputVelo = $('input[name="velo"]')
+// const inputAlt = $('input[name="alt"]')
+// const launchBtn = $(".launchBtn")
 const abortBtn = $(".abortBtn")
-const question = $(".questionSymbolHolder")
+// const question = $(".questionSymbolHolder")
 const altSpan = $(".alt")
 
 // launchBtn.css("background-color",launchBtnBG)
