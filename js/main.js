@@ -1,7 +1,6 @@
 import { checkSatelliteAlt, inputAltChange, convertNum, listBrowsing, makeStar } from "./functions.js"
 
 export const planetList=$(".planetList")
-// export const planetList2=document.querySelector(".planetList")
 export const scrollInput=$(".scrollBar input")
 export const planetContainer = $(".planetContainer")
 export const initAlt = $(".initAlt")
@@ -13,13 +12,11 @@ export const inputAlt = $('input[name="alt"]')
 export const launchBtn = $(".launchBtn")
 export const question = $(".questionSymbolHolder")
 
-// const left_right=document.querySelectorAll(".left, .right")
 const left_right=$(".left, .right")
 const scrollBar=$(".scrollBar")
 const initVelo = $(".initVelo")
 const instruction = $(".instruction")
 const instructionBG = $(".instructionBG")
-// const close = document.querySelector(".close")
 
 let changeRatio=1;
 const px_km=63.78//1px=63.78km
@@ -30,9 +27,7 @@ export let raitio=[]
 
 
 const clickPlanetList=(E,data)=>{
-    console.log("E",E)
     const pName=E.closest(".planetLi").querySelector(".pName span").textContent
-    // const pName=E.find(".pName span").text()
 
     if(pName=="Ceres" && inputAlt.val()>=500){
         console.log("Ceres selected",inputAlt.val())
@@ -52,16 +47,6 @@ const clickPlanetList=(E,data)=>{
     $(".diaSpan").html(convertNum(data[pName].diameter))
 }
 
-
-// question.onclick=()=>{
-//     instruction.css("top",`50%`)
-//     instruction.css("opacity",1)
-//     question.style.opacity=0
-//     instructionBG.show()
-//     setTimeout(()=>{
-//         instructionBG.css("opacity",1)
-//     },0)
-// }
 
 question.on("click",()=>{
     instruction.css("top",`50%`)
@@ -91,8 +76,6 @@ arrowDown.on("click",()=>{
     planetList.css("transitionDelay","0s")
     scrollBar.css("transitionDelay","0s")
     arrowUp.css("transitionDelay",".7s")
-    // arrowUp.style.transitionDelay=".7s"
-    // planetList.style.top="50px"
     planetList.css("top","40%")
     planetList.css("opacity",1)
     scrollInput.prop("disabled", false)
@@ -118,7 +101,6 @@ arrowDown.on("click",()=>{
 
 const listUp=()=>{
     arrowDown.css("transitionDelay",".7s")
-    // arrowUp.style.transitionDelay="0s";
     arrowUp.css("transitionDelay","0s")
     planetList.css("top","-200px")
     planetList.css("opacity",0)
@@ -144,9 +126,6 @@ const listUp=()=>{
     }, 0);
 }
 
-// arrowUp.onclick=()=>{
-//     listUp()
-// }
 arrowUp.on("click",()=>{
     listUp()
 })
@@ -161,7 +140,12 @@ inputVelo.on("input", function(){
 
 
 inputAlt.on("input", function(){
-    inputAltChange($(this).val())
+    const alt=$(this).val()
+    if(!alt){
+        alert("Please set valid altitude.")
+    }else{
+        inputAltChange(alt)
+    }
 })
 
 ////////////////////////// Main //////////////////////////
@@ -202,18 +186,7 @@ fetch("planets.json")
     liBaseWidth=planetLi[0].getBoundingClientRect().width
     imgWidth=planetImg[0].getBoundingClientRect().width
     saturn=$(".planetLi.Saturn")
-    // plWidth2=planetList.getBoundingClientRect().width-(liBaseWidth+planetLi[planetLi.length-1].getBoundingClientRect().width)/2
     plWidth2=+planetList.css("width").split("px")[0]-(liBaseWidth+planetLi[planetLi.length-1].getBoundingClientRect().width)/2
-    
-    // console.log("1:",planetList2.getBoundingClientRect().width)
-    console.log("2:",+planetList.css("width").split("px")[0])
-
-    // scrollInput.oninput=(e)=>{
-    //     listBrowsing(e.target.value,null,data)
-    // }
-    // scrollInput.onchange=(e)=>{
-    //     listBrowsing(e.target.value,null,data)
-    // }
 
     scrollInput.on("input", function(){
         listBrowsing($(this).val(),null,data)
@@ -223,13 +196,9 @@ fetch("planets.json")
         listBrowsing($(this).val(),null,data)
     })
 
-
     planetLi.forEach(val=>{
         val.onclick=(e)=>{
-            // satellite.style.transitionProperty="none, none"
-            // setTimeout(()=>{
-            //     satellite.style.transitionProperty="opacity, top"
-            // },0)
+            
             if(e.target.closest("li").classList[2]=="Sirius-B"){
 
                 alert("Sorry, simulation is unavailable with Sirius-B because of its too massive property values.")
@@ -245,15 +214,15 @@ fetch("planets.json")
                     val.style.width=liBaseWidth+"px"
                     val.style.background="none"
                 })
-    
+                
                 const num=e.target.closest(".planetLi").classList[1].split("planetLi")[1]
                 listBrowsing(null,num,data)
                 
                 scrollInput.val(scrollInput.attr("max")*(num-1)/(planetLi.length-1))
-                satellite.css("top",window.innerHeight/2-planetContainer.css("height").split("px")[0]/2-changeRatio*parseInt(inputAlt.val())/px_km+"px")
+                const satelliteTop=window.innerHeight/2-planetContainer.css("height").split("px")[0]/2-changeRatio*parseInt(inputAlt.val())/px_km
+                satellite.css("top",satelliteTop+"px")
     
                 planetList.css("transitionDelay",".5s")
-                // scrollBar.style.transitionDelay=".5s"
                 scrollBar.css("transitionDelay",".5s")
                 satellite.css("transitionDelay",".7s, 0s")
                 planetContainer.css("transitionDelay",".7s")
@@ -263,7 +232,7 @@ fetch("planets.json")
                 })
     
                 listUp()
-                checkSatelliteAlt()
+                checkSatelliteAlt(satelliteTop)
             }
             
         }
@@ -283,7 +252,6 @@ fetch("planets.json")
     listBrowsing(null,10,data)
     scrollInput.val(scrollInput.attr("max")*9/(planetLi.length-1))
     clickPlanetList(document.querySelector("li.Earth"),data)
-    checkSatelliteAlt()
 
     initVelo.text(parseInt(inputVelo.val()).toLocaleString())
     initAlt.text(parseInt(inputAlt.val()).toLocaleString())

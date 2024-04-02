@@ -10,25 +10,11 @@
 import { mass, px, satellite, arrowDown, arrowUp, launchBtn, inputVelo, inputAlt, question } from "./main.js"
 
 const gravitySpan = $(".gravity")
-// const satellite = $("#satellite")
 const time = $(".time")
-// const point = $(".point")//????
-// const arrowDown = $(".arrowDown")
-// const arrowUp = $(".arrowUp")
 const launchDirectionImg = $(".launchDirectionImg")
 const showInitParams = $(".showInitParams")
-// const inputVelo = $('input[name="velo"]')
-// const inputAlt = $('input[name="alt"]')
-// const launchBtn = $(".launchBtn")
 const abortBtn = $(".abortBtn")
-// const question = $(".questionSymbolHolder")
 const altSpan = $(".alt")
-
-// launchBtn.css("background-color",launchBtnBG)
-// launchBtn.css("border",`1px solid ${launchBD}`)
-// abortBtn.css("background-color",disabledBG)
-// abortBtn.css("color",disabledStr)
-// abortBtn.css("border",`1px solid ${disabledStr}`)
 
 const center_x = window.innerWidth/2;//center coordinate of earth 350+110
 const center_y =  window.innerHeight/2;//center coordinate of earth 150+110
@@ -47,7 +33,6 @@ let launch
 let ini_velo
 let ini_alt
 
-
 ///////////////////////////  Onclick  ///////////////////////////
 launchBtn.click(()=>{
 
@@ -64,13 +49,7 @@ launchBtn.click(()=>{
         inputVelo.attr("disabled",true)
         inputAlt.attr("disabled",true)
         launchBtn.attr("disabled",true)
-        // launchBtn.css("background-color",disabledBG)
-        // launchBtn.css("color",disabledStr)
-        // launchBtn.css("border",`1px solid ${disabledStr}`)
         abortBtn.attr("disabled",false)
-        // abortBtn.css("background-color",abortBtnBG)
-        // abortBtn.css("color",'#ffffff')
-        // abortBtn.css("border",`1px solid ${abortBD}`)
 
         launchDirectionImg.css("display", "none")
         showInitParams.css("display", "none")
@@ -163,8 +142,6 @@ launchBtn.click(()=>{
             gravitySpan.text(gravity.toFixed(2));
             altSpan.text(parseInt(alt).toLocaleString());
         
-            // point.css("top",70-alt/10000*70+"px")//?????
-        
             satellite.offset({top:current_y-size/2,left:current_x-size/2});
         
             history[i]=[current_x,current_y];
@@ -205,15 +182,9 @@ const Reset=()=>{
     arrowDown.css("top","0")
     arrowUp.css("top","0")
     abortBtn.attr("disabled",true)
-    // abortBtn.css("background-color",disabledBG)
-    // abortBtn.css("color",disabledStr)
-    // abortBtn.css("border",`1px solid ${disabledStr}`)
     launchDirectionImg.css("display", "flex")
     showInitParams.css("display", "block")
     launchBtn.attr("disabled",false)
-    // launchBtn.css("background-color",launchBtnBG)
-    // launchBtn.css("color",'#ffffff')
-    // launchBtn.css("border",`1px solid ${launchBD}`)
     inputVelo.attr("disabled",false)
     inputAlt.attr("disabled",false)
     altSpan.text("-")

@@ -51,7 +51,6 @@ body {
         left: 50%;
         transform: translate(-50%,-50%);
         width: 70%;
-        // height: 70vh;
         background-color: darkgrey;
         z-index: 3;
         border: 1px solid #dddddd;
@@ -59,7 +58,6 @@ body {
         transition: all ease-out 1s;
         padding: 0 30px;
         box-sizing: border-box;
-        // text-align: center;
 
         .close {
             position: absolute;
@@ -80,7 +78,6 @@ body {
 
         p {
             font-size: 1.1em;
-            // margin-left: 30px;
         }
 
         .parentFlex {
@@ -96,10 +93,8 @@ body {
                 width: fit-content;
                 display: flex;
                 align-items: center;
-                // margin: 20px 0;
                 margin-right: 50px;
                 font-size: 1.2em;
-    
                 div {
                     margin: 0 3px;
                 }
@@ -109,19 +104,11 @@ body {
             }
     
             .params {
-                // background-color: antiquewhite;
-                // display: flex;
-                // justify-content: center;
-                // flex-wrap: wrap;
-                // align-items: center;
-    
                 div {
-                    // margin: 0 20px;
                     text-align: left;
                 }
             }
         }
-
     }
 
     .instructionBG {
@@ -192,8 +179,6 @@ body {
                     animation-timing-function: ease-in-out;
                     animation-iteration-count: infinite;
                 }
-
-
             }
 
             .instructionSVG {
@@ -202,7 +187,6 @@ body {
                 top: 0;
                 right: -100%;
                 transition: opacity 1s ease-out;
-                // background: #636bd8;
 
                 path, text {
                     animation-name: blink;
@@ -211,19 +195,14 @@ body {
                     animation-timing-function: ease-in-out;
                     animation-iteration-count: infinite;
                 }
-                
             }
 
             .leftGridTop {
                 width: 100%;
                 text-align: center;
                 margin: 10px auto;
-                // display: flex;
-                // justify-content: space-around;
                 label {
                     display: block;
-                    // width: fit-content;
-                    // margin: 0 auto;
                 }
                 input[type="number"] {
                     -moz-appearance: textfield;
@@ -231,12 +210,8 @@ body {
                     margin: 0 auto;
                     margin-bottom: 10px;
                     width: 60%;
-                    // background-color: #acb2e2;
-                    // border: 1px solid grey;
-                    
                     &:focus {
                         outline: none;
-                        // background-color: #a1a5dd;
                     } 
                 }
                 input::-webkit-outer-spin-button,
@@ -249,7 +224,6 @@ body {
                     justify-content: center;
                     margin: 15px 0;
                     input[type="submit"] {
-                        // margin: 5px 0;
                         width: 40%;
                         color: #ffffff;
                         font-size: 1rem;
@@ -258,7 +232,6 @@ body {
                         border-radius: 5px;
                     }
                     .launchBtn, .abortBtn {
-                        // border: 1px solid rgb(199, 35, 35);
                         &:disabled {
                             background-color: rgb(110, 110, 110);
                             color: rgb(70, 70, 70);
@@ -266,7 +239,6 @@ body {
                         }
                     }
                     .abortBtn {
-                        // border: 1px solid rgb(199, 35, 35);
                         background-color: rgb(228, 42, 42);
                         &:hover {
                             background-color: rgb(189, 35, 35);
@@ -274,12 +246,10 @@ body {
                     }
                     .launchBtn {
                         margin-right: 10px;
-                        // border: 1px solid rgb(29, 153, 36);
                         background-color: rgb(53, 211, 32);
                         &:hover {
                             background-color: rgb(41, 168, 25);
                         }
-                       
                     }
                 }
             }
@@ -298,13 +268,11 @@ body {
                 align-items: center;
                 width: fit-content;
                 margin: 0 auto;
-                // border-top: 1px solid grey;
 
                 .use2columns {
                     grid-column-start: 1;
                     grid-column-end: -1;
                 }
-                
                 
                 .timeFlex {
                     display: flex;
@@ -470,52 +438,52 @@ body {
                         width: 100%;
                         z-index: 0;
                     }
-                        .planetLiTop {
+                    .planetLiTop {
+                        width: fit-content;
+                        margin: 10px auto;
+                        color: white;
+
+                        .pName {
                             width: fit-content;
-                            margin: 10px auto;
-                            color: white;
+                            padding: 3px 20px;
+                            margin: 0 auto 5px;
+                            font-size: 1.2em;
+                            background-color: #636bd894;
+                            display: flex;
+                            
+                            img {
+                                width: 18px;
+                                margin-left: 7px;
+                            }
 
-                            .pName {
+                        }
+                        .grid {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            grid-template-rows: 1fr 1fr;
+
+                            .gridLeft {
                                 width: fit-content;
-                                padding: 3px 20px;
-                                margin: 0 auto 5px;
-                                font-size: 1.2em;
-                                background-color: #636bd894;
-                                display: flex;
-                                
-                                img {
-                                    width: 18px;
-                                    margin-left: 7px;
-                                }
-
-                            }
-                            .grid {
-                                display: grid;
-                                grid-template-columns: 1fr 1fr;
-                                grid-template-rows: 1fr 1fr;
-
-                                .gridLeft {
-                                    width: fit-content;
-                                    margin: 0 auto;
-                                }
+                                margin: 0 auto;
                             }
                         }
+                    }
 
-                        img {
-                            display: block;
-                            margin: 0 auto;
-                            width: 84%;//Use the same value as js file
-                        }
+                    img {
+                        display: block;
+                        margin: 0 auto;
+                        width: 84%;//Use the same value as js file
+                    }
 
-                        .forBoxShadow {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 15px;
-                            z-index: 1;
-                        }
+                    .forBoxShadow {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 15px;
+                        z-index: 1;
+                    }
                 }
 
                 li.Saturn {
