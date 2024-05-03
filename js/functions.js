@@ -2,7 +2,6 @@ import { planetContainer,initAlt,satellite,px, imgWidth,planetLi,planetList,liBa
 
 const innerScale = $(".innerScale")
 const imgWidthPercent="84%"//Use the same value as CSS
-const imgWidthPercentSaturn="123%"//Use the same value as CSS
 const planetLiBGcolor1="none"// for testing purpose only
 const planetLiBGcolor2="none"// for testing purpose only
 const mddlWidth= +$(".middle").css("width").split("px")[0]
@@ -39,7 +38,7 @@ export const makeStar=(num, classNum)=>{
 }
 
 
-export const listBrowsing=(value,number,jsonData)=>{
+export const listBrowsing=(value, number, jsonData)=>{
     
     planetLi.forEach(val=>{
         val.style.outline="none"
@@ -173,4 +172,4 @@ export const listBrowsing=(value,number,jsonData)=>{
         planetLi[number-1].querySelector(".forBoxShadow").style.boxShadow="inset 0 0 20px white, 0 0 30px white"
     }
 
-}//const func=(value,number)
+}

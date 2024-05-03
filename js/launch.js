@@ -1,13 +1,4 @@
-// val.pageX, val.pageY:
-//      absolute coordinate of clicked point from upper left of viewport  (including scrolled amount)
-
-// val.target.getBoundingClientRect().top :
-//      distance between top of element and top of viewport (not including scrolled amount)
-
-//window.pageYOffset, window.pageXOffset : scrolled amount
-
-
-import { mass, px, satellite, arrowDown, arrowUp, launchBtn, inputVelo, inputAlt, question } from "./main.js"
+import { mass, px, satellite, arrowDown, arrowUp, launchBtn, inputVelo, inputAlt, question, initSVG } from "./main.js"
 
 const gravitySpan = $(".gravity")
 const time = $(".time")
@@ -60,6 +51,9 @@ launchBtn.click(()=>{
 
         $(".rectSVG").css("opacity",0)
         $(".instructionSVG").css("opacity",0)
+
+        initSVG.css("opacity",0)
+        setTimeout(()=>initSVG.hide(),1000)
 
         // Keep variables below inside onclick function to initialize them everytime launch button is clicked
         

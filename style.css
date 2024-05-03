@@ -1,13 +1,39 @@
 body {
-  background-color: black;
+  background-color: #000000;
   position: relative;
   margin: 0;
   overflow: hidden;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 100vh;
   font-family: Helvetica, Arial, serif, "Times New Roman", Times;
+}
+body .initSVG {
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+  z-index: 4;
+}
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+body .initSVG text {
+  font-weight: 900;
+}
+body .initSVG text, body .initSVG .arrowPath {
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 body .questionSymbolHolder {
   position: absolute;
@@ -124,7 +150,7 @@ body .flex .left, body .flex .right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  min-width: 250px;
+  width: 250px;
   height: 350px;
   background-color: rgba(220, 223, 255, 0.3);
   z-index: 2;
@@ -149,24 +175,6 @@ body .flex .left {
     opacity: 0.2;
   }
 }
-body .flex .left .rectSVG {
-  overflow: visible;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: opacity 1s ease-out;
-}
-body .flex .left .rectSVG rect {
-  stroke: white;
-  stroke-width: 7px;
-  fill: none;
-  animation-name: blink;
-  animation-duration: 2s;
-  animation-fill-mode: both;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
 body .flex .left .instructionSVG {
   overflow: visible;
   position: absolute;
@@ -181,35 +189,34 @@ body .flex .left .instructionSVG path, body .flex .left .instructionSVG text {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
-body .flex .left .leftGridTop {
+body .flex .left .leftTop {
   width: 100%;
   text-align: center;
   margin: 10px auto;
 }
-body .flex .left .leftGridTop label {
+body .flex .left .leftTop label {
   display: block;
 }
-body .flex .left .leftGridTop input[type=number] {
-  -moz-appearance: textfield;
+body .flex .left .leftTop input[type=number] {
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
   width: 60%;
 }
-body .flex .left .leftGridTop input[type=number]:focus {
+body .flex .left .leftTop input[type=number]:focus {
   outline: none;
 }
-body .flex .left .leftGridTop input::-webkit-outer-spin-button,
-body .flex .left .leftGridTop input::-webkit-inner-spin-button {
+body .flex .left .leftTop input::-webkit-outer-spin-button,
+body .flex .left .leftTop input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-body .flex .left .leftGridTop .buttonFlex {
+body .flex .left .leftTop .buttonFlex {
   display: flex;
   justify-content: center;
   margin: 15px 0;
 }
-body .flex .left .leftGridTop .buttonFlex input[type=submit] {
+body .flex .left .leftTop .buttonFlex input[type=submit] {
   width: 40%;
   color: #ffffff;
   font-size: 1rem;
@@ -217,29 +224,29 @@ body .flex .left .leftGridTop .buttonFlex input[type=submit] {
   border: 1px solid rgba(180, 180, 180, 0.384);
   border-radius: 5px;
 }
-body .flex .left .leftGridTop .buttonFlex .launchBtn:disabled, body .flex .left .leftGridTop .buttonFlex .abortBtn:disabled {
+body .flex .left .leftTop .buttonFlex .launchBtn:disabled, body .flex .left .leftTop .buttonFlex .abortBtn:disabled {
   background-color: rgb(110, 110, 110);
   color: rgb(70, 70, 70);
   pointer-events: none;
 }
-body .flex .left .leftGridTop .buttonFlex .abortBtn {
+body .flex .left .leftTop .buttonFlex .abortBtn {
   background-color: rgb(228, 42, 42);
 }
-body .flex .left .leftGridTop .buttonFlex .abortBtn:hover {
+body .flex .left .leftTop .buttonFlex .abortBtn:hover {
   background-color: rgb(189, 35, 35);
 }
-body .flex .left .leftGridTop .buttonFlex .launchBtn {
+body .flex .left .leftTop .buttonFlex .launchBtn {
   margin-right: 10px;
   background-color: rgb(53, 211, 32);
 }
-body .flex .left .leftGridTop .buttonFlex .launchBtn:hover {
+body .flex .left .leftTop .buttonFlex .launchBtn:hover {
   background-color: rgb(41, 168, 25);
 }
 body .flex .left hr {
   border: none;
   border-top: 1px solid grey;
 }
-body .flex .left .leftGrid {
+body .flex .left .leftBottom {
   display: grid;
   grid-template-columns: 70% 30%;
   grid-template-columns: 135px 80px;
@@ -250,18 +257,18 @@ body .flex .left .leftGrid {
   width: fit-content;
   margin: 0 auto;
 }
-body .flex .left .leftGrid .use2columns {
+body .flex .left .leftBottom .use2columns {
   grid-column-start: 1;
   grid-column-end: -1;
 }
-body .flex .left .leftGrid .timeFlex {
+body .flex .left .leftBottom .timeFlex {
   display: flex;
   justify-content: space-between;
 }
-body .flex .left .leftGrid .toRight {
+body .flex .left .leftBottom .toRight {
   margin-left: auto;
 }
-body .flex .left .leftGrid .toRight, body .flex .left .leftGrid .time {
+body .flex .left .leftBottom .toRight, body .flex .left .leftBottom .time {
   color: rgb(10, 221, 221);
 }
 body .flex .right {
@@ -286,7 +293,7 @@ body .flex .right .rightTop .planetName img {
   width: 18px;
   margin-left: 7px;
 }
-body .flex .right .rightGrid {
+body .flex .right .rightBottom {
   margin: 10px 0 0 20px;
   height: 75%;
   display: flex;

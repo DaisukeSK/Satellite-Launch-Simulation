@@ -11,6 +11,7 @@ export const inputVelo = $('input[name="velo"]')
 export const inputAlt = $('input[name="alt"]')
 export const launchBtn = $(".launchBtn")
 export const question = $(".questionSymbolHolder")
+export const initSVG = $(".initSVG")
 
 const left_right=$(".left, .right")
 const scrollBar=$(".scrollBar")
@@ -30,7 +31,6 @@ const clickPlanetList=(E,data)=>{
     const pName=E.closest(".planetLi").querySelector(".pName span").textContent
 
     if(pName=="Ceres" && inputAlt.val()>=500){
-        console.log("Ceres selected",inputAlt.val())
         inputAlt.val(500)
         inputAltChange(inputAlt.val())
     }
@@ -234,25 +234,50 @@ fetch("planets.json")
                 listUp()
                 checkSatelliteAlt(satelliteTop)
             }
-            
         }
     })//planetLi.forEach, onclick
 
     ////////////////////////// Onload //////////////////////////
-    instruction.css("top",`-${window.innerHeight}px`)
-    satellite.css("top",window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-changeRatio*inputAlt.val()/px+"px")
-
-    makeStar(50, 2);
-    makeStar(100, 4);
-    // makeStar(500, 1);
-    // makeStar(400, 3);
-
+    
+    listBrowsing(null,10,data)
+    clickPlanetList(document.querySelector("li.Earth"),data)
+    
     saturn.find(".planetImg").css("width","150%")
     saturn.css("width","535px")
-    listBrowsing(null,10,data)
     scrollInput.val(scrollInput.attr("max")*9/(planetLi.length-1))
-    clickPlanetList(document.querySelector("li.Earth"),data)
 
-    initVelo.text(parseInt(inputVelo.val()).toLocaleString())
-    initAlt.text(parseInt(inputAlt.val()).toLocaleString())
 })// End of fetch("planets.json")
+
+
+////////////////////////// Onload //////////////////////////
+instruction.css("top",`-${window.innerHeight}px`)
+satellite.css("top",window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-changeRatio*inputAlt.val()/px+"px")
+
+makeStar(50, 2);
+makeStar(100, 4);
+
+initVelo.text(parseInt(inputVelo.val()).toLocaleString())
+initAlt.text(parseInt(inputAlt.val()).toLocaleString())
+
+const leftBox_left=left_right[0].getBoundingClientRect().left//20
+const leftBox_top=left_right[0].getBoundingClientRect().top//depends on device
+const leftBox_width=left_right[0].getBoundingClientRect().width//250
+
+$(".initSVG .bgPath").attr("d",
+`m0,0 h${window.innerWidth} v${window.innerHeight} h-${window.innerWidth}z
+m${leftBox_left},${leftBox_top+1} h${leftBox_width} v158 h-${leftBox_width}z`
+)
+
+$(".initSVG text").attr("x",leftBox_left+leftBox_width+40)
+$(".initSVG text").attr("y",leftBox_top+70)
+
+$(".initSVG .arrowPath").each(function(){
+    $(this).attr("d",
+    `m${leftBox_left+leftBox_width+10},${leftBox_top+80} l 15 -10 h-10 l-15 10 h750 v-1 h-750`
+    )
+})
+
+setTimeout(()=>initSVG.css("opacity",1),500)
+
+
+
