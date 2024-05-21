@@ -197,11 +197,16 @@ body .flex .left .leftTop {
 body .flex .left .leftTop label {
   display: block;
 }
+body .flex .left .leftTop .outOfRange {
+  color: rgb(255, 60, 60);
+  display: none;
+}
 body .flex .left .leftTop input[type=number] {
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
   width: 60%;
+  border: 2px solid transparent;
 }
 body .flex .left .leftTop input[type=number]:focus {
   outline: none;

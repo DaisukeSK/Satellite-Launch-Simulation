@@ -1,4 +1,4 @@
-import { planetContainer,initAlt,satellite,px, imgWidth,planetLi,planetList,liBaseWidth,raitio,planetImg,scrollInput,plWidth2,saturn } from "./main.js"
+import { planetContainer,initAlt,satellite,px, imgWidth,planetLi,planetList,liBaseWidth,raitio,planetImg,scrollInput,plWidth2,saturn,outOfRange,inputAlt } from "./main.js"
 
 const innerScale = $(".innerScale")
 const imgWidthPercent="84%"//Use the same value as CSS
@@ -16,6 +16,8 @@ export const inputAltChange=(num)=>{
     
     const top=window.innerHeight/2-planetContainer.css("width").split("px")[0]/2-num/px
     satellite.css("top",top+"px")
+    top>0?outOfRange.hide():outOfRange.show()
+    inputAlt.css("background-color",top>0?"#FFFFFF":"#FF7171")
     $(".showInitAlt").text(parseInt(num).toLocaleString())
     initAlt.text(parseInt(num).toLocaleString())
     checkSatelliteAlt(top)

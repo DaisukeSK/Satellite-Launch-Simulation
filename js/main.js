@@ -12,6 +12,7 @@ export const inputAlt = $('input[name="alt"]')
 export const launchBtn = $(".launchBtn")
 export const question = $(".questionSymbolHolder")
 export const initSVG = $(".initSVG")
+export const outOfRange = $(".outOfRange")
 
 const left_right=$(".left, .right")
 const scrollBar=$(".scrollBar")
@@ -221,6 +222,9 @@ fetch("planets.json")
                 scrollInput.val(scrollInput.attr("max")*(num-1)/(planetLi.length-1))
                 const satelliteTop=window.innerHeight/2-planetContainer.css("height").split("px")[0]/2-changeRatio*parseInt(inputAlt.val())/px_km
                 satellite.css("top",satelliteTop+"px")
+
+                satelliteTop>0?outOfRange.hide():outOfRange.show()
+                inputAlt.css("background-color",satelliteTop>0?"#FFFFFF":"#FF7171")
     
                 planetList.css("transitionDelay",".5s")
                 scrollBar.css("transitionDelay",".5s")

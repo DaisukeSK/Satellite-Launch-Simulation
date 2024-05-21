@@ -205,11 +205,16 @@ body {
                 label {
                     display: block;
                 }
+                .outOfRange {
+                    color: rgb(255, 60, 60);
+                    display: none;
+                }
                 input[type="number"] {
                     display: block;
                     margin: 0 auto;
                     margin-bottom: 10px;
                     width: 60%;
+                    border: 2px solid transparent;
                     &:focus {
                         outline: none;
                     } 

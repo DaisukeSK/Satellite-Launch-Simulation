@@ -151,7 +151,7 @@ launchBtn.click(()=>{
             }
             
             if(current_x<0 || current_x>window.innerWidth || current_y<0 || current_y>window.innerHeight){
-                alert("Aborted: Out of the range.")
+                alert("Aborted: Satellite is out of range.")
                 clearInterval(launch)
                 Reset()
             }
@@ -162,7 +162,7 @@ launchBtn.click(()=>{
                 clearInterval(launch)
                 
                 setTimeout(()=>{
-                    alert("Aborted: Reached surface of the planet/star.")
+                    alert("Aborted: Satellite reached surface of the planet/star.")
                     Reset()
                 },50)
             }
