@@ -1,22 +1,19 @@
 # Satellite Launch Simulation
 
-This is a numerical simulation of a satellite's behavior going around the planet, created based on a formula for gravity. You can try it in various situations.
-
-This is made only with [`JavaScript`](https://developer.mozilla.org/docs/Web/JavaScript) and [`jQuery`](https://jquery.com/).
+This is a numerical simulation made with [`JavaScript`](https://developer.mozilla.org/docs/Web/JavaScript) and [`jQuery`](https://jquery.com/) only, built based on a formula for gravity, which allows you to simulate how an artificial satellite travels around the planet after the launch depending on parameters you set.
 
 ## Run the Project
 
-Clone the repo in your local machine and open `index.html` in your browser with local server environment.\
-(ex. Open it with `Live Server` of `VS code`)
+1. Clone the repo in your local machine and open `index.html` in your browser with local server environment.\
+   (ex. Open it with `Live Server` of `VS code`)\
+
+2. Input launch velocity and altitude on the left side bar.\
+   Simulation will start sa soon as you click `Launch` button and you can observe how the satellite behaves.\
+
+3. You can also select the planets/starts from many selections by clicking the arrow on the top.\
+   The satellite will behave differently depending on the parameters and planet you set.
 
 ## Project Description
 
-This is a numerical satellite-launch simulation built based on the formula for gravity shown below.<br/>
+This simulator is built based on the formula for gravity shown below.<br/>
 <img src='./assets/formula.png'>
-
-This simulation is to simulate how the artificial satellite goes around the planet depending on parameters you set.<br/>
-To try simlation, input launch velocity and altitude on the left side.<br/>
-Simulation will start sa soon as you click "Launch" button and you can see how the satellite behaves.<br/>
-
-You can also select the planets from many selections by clicking the arrow on the top.<br/>
-The satellite will behave differently depending on the parameters and planet you set.
