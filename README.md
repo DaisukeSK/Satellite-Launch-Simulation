@@ -6,7 +6,7 @@ This is made only with [`JavaScript`](https://developer.mozilla.org/docs/Web/Jav
 
 ## Run the Project
 
-Clone the repo in your local machine and open `index.html` in your browser with local server environment.
+Clone the repo in your local machine and open `index.html` in your browser with local server environment.\
 (ex. Open it with `Live Server` of `VS code`)
 
 ## Project Description
