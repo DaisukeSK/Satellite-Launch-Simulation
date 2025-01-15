@@ -5,10 +5,11 @@ This is a numerical simulation made with [`JavaScript`](https://developer.mozill
 ## Run the Project
 
 1. Clone the repo in your local machine and open `index.html` in your browser with local server environment.\
-   (ex. Open it with `Live Server` of `VS code`)\
+   (ex. Open it with `Live Server` of `VS code`)
 
 2. Input launch velocity and altitude on the left side bar.\
-   Simulation will start sa soon as you click `Launch` button and you can observe how the satellite behaves.\
+   Simulation will start as soon as you click `Launch` button and you can observe how the satellite behaves.\
+   Simulation will stop either when the satellite gets out of the screen or hits the planet, or when you click `Abort` button.
 
 3. You can also select the planets/starts from many selections by clicking the arrow on the top.\
    The satellite will behave differently depending on the parameters and planet you set.
